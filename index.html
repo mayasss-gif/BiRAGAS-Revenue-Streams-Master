@@ -1,0 +1,3050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>BiRAGAS · Revenue Streams Master Presentation</title>
+<meta name="description" content="BiRAGAS Revenue Streams Master Presentation — 62 slides · five streams · one causal operating system · $618.8M by 2030.">
+
+<style>
+  html, body, #root { height: 100%; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    background: #0A0908;
+    color: #F5F0E8;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overscroll-behavior-y: contain;
+  }
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: #0A0908; }
+  ::-webkit-scrollbar-thumb { background: #222; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #333; }
+
+  #boot {
+    position: fixed; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    background: #0A0908; color: #F5F0E8; z-index: 0;
+  }
+  #boot .kicker { font-size: 10px; letter-spacing: 0.3em; color: #888; font-family: monospace; }
+  #boot .logo { font-size: 32px; font-weight: 800; letter-spacing: -1px; margin-top: 14px; text-align: center; max-width: 92vw; color: #F5F0E8; }
+  #boot .spin { margin-top: 30px; width: 22px; height: 22px; border: 2px solid #333; border-top-color: #C8A560; border-radius: 50%; animation: spin 0.9s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Top bar */
+  .topbar {
+    position: fixed; top: 0; left: 0; right: 0; height: 56px;
+    background: rgba(10, 9, 8, 0.9);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid #1F1F1F;
+    display: flex; align-items: center;
+    padding: 0 24px; gap: 14px;
+    z-index: 100;
+    padding-top: env(safe-area-inset-top, 0px);
+    height: calc(56px + env(safe-area-inset-top, 0px));
+  }
+  .hamburger { background: transparent; border: 1px solid #333; width: 40px; height: 40px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; flex-shrink: 0; }
+  .hamburger:active { background: #1A1A1A; }
+  .tb-title { font-size: 13px; font-weight: 700; letter-spacing: -0.2px; color: #F5F0E8; min-width: 0; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .tb-kicker { font-size: 9px; color: #888; font-family: monospace; letter-spacing: 0.2em; }
+  .chip { display: inline-flex; align-items: center; padding: 5px 10px; background: #161616; border: 1px solid #2A2A2A; font-family: monospace; font-size: 10px; color: #C8C4BC; border-radius: 3px; letter-spacing: 0.06em; flex-shrink: 0; }
+  .audio-btn { background: transparent; color: #C8C4BC; border: 1px solid #333; padding: 7px 12px; font-family: monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; cursor: pointer; border-radius: 4px; display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+  .audio-btn.on { background: var(--accent, #C8A560); color: #0A0908; border-color: var(--accent, #C8A560); }
+
+  /* Drawer */
+  .drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); z-index: 300; opacity: 0; pointer-events: none; transition: opacity 0.22s ease; }
+  .drawer-overlay.open { opacity: 1; pointer-events: auto; }
+  .drawer { position: fixed; top: 0; left: 0; bottom: 0; width: min(86vw, 380px); background: #0F0F0F; z-index: 310; transform: translateX(-100%); transition: transform 0.28s cubic-bezier(0.4,0,0.2,1); display: flex; flex-direction: column; box-shadow: 0 0 60px rgba(0,0,0,0.8); }
+  .drawer.open { transform: translateX(0); }
+  .drawer-head { padding: 16px 20px; border-bottom: 1px solid #1F1F1F; display: flex; justify-content: space-between; align-items: center; padding-top: max(16px, env(safe-area-inset-top, 16px)); }
+  .drawer-list { flex: 1; overflow-y: auto; padding: 6px 0; padding-bottom: max(20px, env(safe-area-inset-bottom, 20px)); }
+  .drawer-item { display: block; width: 100%; background: transparent; border: none; border-left: 3px solid transparent; padding: 12px 18px; text-align: left; cursor: pointer; font-family: inherit; transition: background 0.12s ease; }
+  .drawer-item:active { background: #1A1A1A; }
+  .drawer-stream-header { padding: 14px 18px 6px; font-size: 9px; letter-spacing: 0.3em; font-family: monospace; font-weight: 700; }
+
+  /* Slide container */
+  .slide {
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: calc(80px + env(safe-area-inset-top, 0px)) 80px 140px;
+    box-sizing: border-box;
+    display: flex; flex-direction: column;
+  }
+  .slide-kicker { font-size: 10px; letter-spacing: 0.3em; color: var(--accent, #C8A560); font-family: monospace; font-weight: 700; margin-bottom: 14px; text-transform: uppercase; }
+  .slide-title { font-size: 38px; font-weight: 700; letter-spacing: -0.5px; line-height: 1.1; margin: 0 0 14px; color: #F5F0E8; }
+  .slide-subtitle { font-size: 18px; color: #C8C4BC; line-height: 1.45; font-style: italic; margin-bottom: 24px; max-width: 920px; }
+  .slide-body { font-size: 15px; line-height: 1.65; color: #C8C4BC; max-width: 880px; margin-bottom: 24px; white-space: pre-wrap; }
+
+  /* Cover kind */
+  .slide.cover { justify-content: center; }
+  .slide.cover .slide-title { font-size: 64px; line-height: 1.05; margin-bottom: 18px; }
+  .slide.cover .slide-subtitle { font-size: 20px; max-width: 980px; }
+  .big-number { font-size: 96px; font-weight: 800; letter-spacing: -2px; color: var(--accent, #C8A560); margin: 30px 0 8px; line-height: 1; }
+  .big-label { font-size: 13px; font-family: monospace; color: #888; letter-spacing: 0.06em; max-width: 880px; line-height: 1.5; }
+
+  /* Manifesto kind */
+  .slide.manifesto { justify-content: center; }
+  .slide.manifesto .slide-title { font-size: 56px; line-height: 1.1; max-width: 1100px; }
+  .slide.manifesto .slide-subtitle { font-size: 22px; max-width: 980px; color: #E8E4DC; line-height: 1.5; }
+
+  /* KPI grid */
+  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 22px 0; max-width: 1200px; }
+  .kpi { background: #0F0F0F; border: 1px solid #1F1F1F; border-top: 3px solid var(--accent, #C8A560); padding: 22px 18px; }
+  .kpi-k { font-size: 30px; font-weight: 700; color: #F5F0E8; letter-spacing: -0.6px; line-height: 1.1; }
+  .kpi-v { font-size: 11px; color: #888; margin-top: 8px; font-family: monospace; text-transform: uppercase; letter-spacing: 0.06em; line-height: 1.4; }
+
+  /* Tables */
+  .tbl-wrap { margin: 22px 0; border: 1px solid #1F1F1F; background: #0F0F0F; max-width: 1300px; }
+  .tbl-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .tbl { border-collapse: collapse; width: 100%; min-width: 100%; }
+  .tbl th { background: #161616; padding: 14px 16px; text-align: left; font-size: 10px; letter-spacing: 0.18em; color: #888; text-transform: uppercase; font-family: monospace; font-weight: 700; border-bottom: 2px solid var(--accent, #C8A560); white-space: nowrap; }
+  .tbl td { padding: 12px 16px; font-size: 13px; color: #E8E4DC; border-bottom: 1px solid #1A1A1A; vertical-align: top; line-height: 1.45; }
+  .tbl td:first-child { color: var(--accent, #C8A560); font-weight: 700; white-space: nowrap; }
+  .tbl tr:last-child td { border-bottom: none; }
+  .tbl .total-row td { background: #161616; font-weight: 700; border-top: 2px solid var(--accent, #C8A560); }
+
+  /* Chart */
+  .chart-card { background: #0F0F0F; border: 1px solid #1F1F1F; padding: 26px; margin: 22px 0; max-width: 1100px; }
+  .chart-title { font-size: 11px; letter-spacing: 0.22em; color: #888; text-transform: uppercase; font-family: monospace; margin-bottom: 16px; font-weight: 700; }
+  .legend { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 14px; }
+  .legend-item { display: flex; align-items: center; gap: 7px; font-size: 11px; color: #C8C4BC; font-family: monospace; }
+  .legend-dot { width: 14px; height: 14px; display: inline-block; border-radius: 2px; flex-shrink: 0; }
+
+  /* Bullet list */
+  .bullet-list { list-style: none; padding: 0; margin: 22px 0; max-width: 1100px; }
+  .bullet-list li { padding: 14px 0 14px 36px; position: relative; font-size: 15px; line-height: 1.55; color: #E8E4DC; border-bottom: 1px solid #1A1A1A; }
+  .bullet-list li:last-child { border-bottom: none; }
+  .bullet-list li::before { content: "→"; position: absolute; left: 8px; top: 14px; color: var(--accent, #C8A560); font-weight: 700; font-size: 18px; }
+
+  /* Pill nav */
+  .pill-nav {
+    position: fixed; left: 14px; right: 14px;
+    bottom: max(20px, calc(env(safe-area-inset-bottom, 0px) + 14px));
+    display: flex; gap: 10px;
+    z-index: 200;
+    pointer-events: none;
+  }
+  .pill-nav button {
+    pointer-events: auto; flex: 1;
+    height: 58px; border-radius: 29px;
+    border: 1px solid #2A2A2A;
+    background: rgba(15,15,15,0.96);
+    color: #F5F0E8;
+    font-family: monospace; font-size: 12px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    cursor: pointer;
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 16px 44px rgba(0,0,0,0.6);
+    transition: transform 0.12s ease;
+  }
+  .pill-nav button:active { transform: scale(0.97); }
+  .pill-nav button.next { background: var(--accent, #C8A560); color: #0A0908; border-color: var(--accent, #C8A560); }
+  .pill-nav button:disabled { opacity: 0.35; cursor: default; }
+
+  @media (min-width: 901px) {
+    .pill-nav { left: auto; right: 32px; width: 320px; }
+  }
+
+  /* Mobile */
+  @media (max-width: 900px) {
+    .topbar { padding: 0 14px; gap: 10px; }
+    .tb-title { font-size: 12px; }
+    .tb-kicker { display: none; }
+    .slide { padding: calc(72px + env(safe-area-inset-top, 0px)) 18px 180px; }
+    .slide-title { font-size: 24px; }
+    .slide-subtitle { font-size: 14px; }
+    .slide-body { font-size: 14px; }
+    .slide.cover .slide-title { font-size: 36px; }
+    .slide.cover .slide-subtitle { font-size: 15px; }
+    .big-number { font-size: 56px; }
+    .slide.manifesto .slide-title { font-size: 30px; line-height: 1.15; }
+    .slide.manifesto .slide-subtitle { font-size: 15px; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .kpi { padding: 14px 10px; }
+    .kpi-k { font-size: 20px; }
+    .kpi-v { font-size: 9px; margin-top: 5px; }
+    .chart-card { padding: 14px 12px; margin: 16px 0; }
+    .chart-title { font-size: 10px; margin-bottom: 10px; }
+    .legend-item { font-size: 10px; }
+    .tbl th { padding: 8px 10px; font-size: 9px; }
+    .tbl td { padding: 8px 10px; font-size: 11.5px; }
+    .bullet-list li { font-size: 13px; padding: 11px 0 11px 30px; }
+    .audio-btn { padding: 6px 10px; font-size: 9px; }
+    .audio-btn span:last-child { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div id="boot">
+  <div class="kicker">BIRAGAS · MMXXVI</div>
+  <div class="logo">REVENUE STREAMS · MASTER PRESENTATION</div>
+  <div class="spin"></div>
+</div>
+
+<div id="root"></div>
+
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel" data-presets="react,env">
+const { useState, useEffect, useRef } = React;
+const DATA = window.__DECK_DATA__;
+const slides = DATA.slides;
+
+const STREAM_NAMES = {
+  front: "Front Matter",
+  saas: "Stream I · SaaS",
+  codev: "Stream II · Co-Dev",
+  ldt: "Stream III · LDT",
+  wellness: "Stream IV · Wellness",
+  cdx: "Stream V · CDx",
+  close: "Synthesis & Close",
+};
+const STREAM_COLORS = {
+  front: "#C8A560", saas: "#3B82F6", codev: "#EF4444",
+  ldt: "#14B8A6", wellness: "#C8A560", cdx: "#A855F7", close: "#1E40AF",
+};
+
+// ─── CHART COMPONENTS ───
+function BarH({ data, title, unit }) {
+  const max = Math.max(...data.map(d => d.value)) * 1.05;
+  const W = 760, H = 38 * data.length + 30, leftPad = 230;
+  return (
+    <div className="chart-card">
+      {title && <div className="chart-title">{title}</div>}
+      <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMinYMin meet" style={{ width: "100%", height: "auto", display: "block" }}>
+        {data.map((d, i) => {
+          const y = i * 38 + 12;
+          const barW = Math.max(2, (d.value / max) * (W - leftPad - 30));
+          const val = typeof d.value === "number" ? (d.value < 10 ? +d.value.toFixed(2) : d.value.toLocaleString()) : d.value;
+          return (
+            <g key={i}>
+              <text x={leftPad - 14} y={y + 19} textAnchor="end" fill="#C8C4BC" fontSize="12" fontWeight="500">{d.label}</text>
+              <rect x={leftPad} y={y + 4} width={barW} height={24} fill={d.color || "#3B82F6"} rx="2" />
+              <text x={leftPad + barW + 8} y={y + 21} fill="#F5F0E8" fontSize="12" fontFamily="monospace" fontWeight="700">{val}{unit ? unit : ""}</text>
+            </g>
+          );
+        })}
+      </svg>
+    </div>
+  );
+}
+
+function BarV({ data, title, unit }) {
+  const max = Math.max(...data.map(d => d.value)) * 1.15;
+  const W = 720, H = 320, padBottom = 50, padTop = 30, padX = 40;
+  const barW = (W - padX * 2) / data.length;
+  return (
+    <div className="chart-card">
+      {title && <div className="chart-title">{title}</div>}
+      <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMinYMin meet" style={{ width: "100%", height: "auto", display: "block" }}>
+        {data.map((d, i) => {
+          const h = ((d.value / max) * (H - padTop - padBottom));
+          const x = padX + i * barW + barW * 0.15;
+          const w = barW * 0.7;
+          const y = H - padBottom - h;
+          return (
+            <g key={i}>
+              <rect x={x} y={y} width={w} height={h} fill={d.color || "#3B82F6"} rx="2" />
+              <text x={x + w / 2} y={y - 8} textAnchor="middle" fill="#F5F0E8" fontSize="12" fontFamily="monospace" fontWeight="700">{d.value}{unit ? unit : ""}</text>
+              <text x={x + w / 2} y={H - padBottom + 20} textAnchor="middle" fill="#C8C4BC" fontSize="11" fontFamily="-apple-system,sans-serif" fontWeight="600">{d.label}</text>
+            </g>
+          );
+        })}
+        <line x1={padX} y1={H - padBottom} x2={W - padX} y2={H - padBottom} stroke="#333" strokeWidth="1" />
+      </svg>
+    </div>
+  );
+}
+
+function BarVGrouped({ x, series, title }) {
+  const all = series.flatMap(s => s.data);
+  const max = Math.max(...all) * 1.18;
+  const W = 760, H = 360, padBottom = 60, padTop = 20, padX = 40;
+  const groupW = (W - padX * 2) / x.length;
+  const barW = groupW * 0.85 / series.length;
+  return (
+    <div className="chart-card">
+      {title && <div className="chart-title">{title}</div>}
+      <div className="legend">
+        {series.map((s, i) => <div key={i} className="legend-item"><span className="legend-dot" style={{ background: s.color }}></span>{s.label}</div>)}
+      </div>
+      <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMinYMin meet" style={{ width: "100%", height: "auto", display: "block" }}>
+        {x.map((xLabel, gi) => {
+          const gx = padX + gi * groupW + groupW * 0.075;
+          return (
+            <g key={gi}>
+              {series.map((s, si) => {
+                const v = s.data[gi] || 0;
+                const h = (v / max) * (H - padTop - padBottom);
+                const bx = gx + si * barW;
+                const by = H - padBottom - h;
+                return <rect key={si} x={bx} y={by} width={barW - 2} height={h} fill={s.color} rx="1" />;
+              })}
+              <text x={gx + groupW * 0.42} y={H - padBottom + 22} textAnchor="middle" fill="#C8C4BC" fontSize="11" fontFamily="monospace" fontWeight="600">{xLabel}</text>
+            </g>
+          );
+        })}
+        <line x1={padX} y1={H - padBottom} x2={W - padX} y2={H - padBottom} stroke="#333" strokeWidth="1" />
+      </svg>
+    </div>
+  );
+}
+
+function LineChart({ x, series, title }) {
+  const all = series.flatMap(s => s.data);
+  const max = Math.max(...all) * 1.15;
+  const W = 760, H = 360, padBottom = 50, padTop = 30, padX = 50;
+  const innerW = W - padX * 2, innerH = H - padTop - padBottom;
+  const stepX = innerW / Math.max(1, x.length - 1);
+  return (
+    <div className="chart-card">
+      {title && <div className="chart-title">{title}</div>}
+      <div className="legend">
+        {series.map((s, i) => <div key={i} className="legend-item"><span className="legend-dot" style={{ background: s.color, width: 18, height: 3, borderRadius: 1 }}></span>{s.label}</div>)}
+      </div>
+      <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMinYMin meet" style={{ width: "100%", height: "auto", display: "block" }}>
+        {[0, 0.25, 0.5, 0.75, 1].map((t, i) => {
+          const y = padTop + innerH * t;
+          return (
+            <g key={i}>
+              <line x1={padX} y1={y} x2={W - padX} y2={y} stroke="#1F1F1F" strokeWidth="1" />
+              <text x={padX - 8} y={y + 4} textAnchor="end" fill="#666" fontSize="10" fontFamily="monospace">{Math.round(max * (1 - t))}</text>
+            </g>
+          );
+        })}
+        {x.map((xLabel, i) => (
+          <text key={i} x={padX + i * stepX} y={H - padBottom + 20} textAnchor="middle" fill="#C8C4BC" fontSize="11" fontFamily="monospace" fontWeight="600">{xLabel}</text>
+        ))}
+        {series.map((s, si) => {
+          const points = s.data.map((v, i) => [padX + i * stepX, padTop + innerH * (1 - v / max)]);
+          const path = points.map((p, i) => `${i === 0 ? "M" : "L"} ${p[0]} ${p[1]}`).join(" ");
+          const last = points[points.length - 1];
+          return (
+            <g key={si}>
+              <path d={path} stroke={s.color} strokeWidth="2.5" fill="none" />
+              {points.map((p, i) => <circle key={i} cx={p[0]} cy={p[1]} r="4" fill={s.color} stroke="#0A0908" strokeWidth="2" />)}
+              <text x={last[0] + 8} y={last[1] + 4} fill={s.color} fontSize="11" fontFamily="monospace" fontWeight="700">{s.data[s.data.length - 1]}</text>
+            </g>
+          );
+        })}
+      </svg>
+    </div>
+  );
+}
+
+function renderChart(chart) {
+  if (!chart) return null;
+  if (chart.type === "bar-h") return <BarH data={chart.data} title={chart.title} unit={chart.unit} />;
+  if (chart.type === "bar-v") return <BarV data={chart.data} title={chart.title} unit={chart.unit} />;
+  if (chart.type === "bar-v-grouped") return <BarVGrouped x={chart.x} series={chart.series} title={chart.title} />;
+  if (chart.type === "line") return <LineChart x={chart.x} series={chart.series} title={chart.title} />;
+  return null;
+}
+
+// ─── APP ───
+function App() {
+  const [idx, setIdx] = useState(0);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [audioOn, setAudioOn] = useState(false);
+  const touchRef = useRef(null);
+  const audioRef = useRef(null);
+  const slideRef = useRef(null);
+
+  const cur = slides[idx];
+  const accent = cur.color;
+
+  useEffect(() => { document.body.style.overflow = drawerOpen ? "hidden" : ""; return () => { document.body.style.overflow = ""; }; }, [drawerOpen]);
+  useEffect(() => { const b = document.getElementById("boot"); if (b) b.style.display = "none"; }, []);
+  useEffect(() => { if (slideRef.current) slideRef.current.scrollTop = 0; window.scrollTo(0, 0); }, [idx]);
+
+  // Audio sync
+  useEffect(() => {
+    const a = audioRef.current;
+    if (!a) return;
+    a.pause();
+    if (!audioOn) return;
+    a.src = `audio/${cur.id}.mp3`;
+    a.load();
+    const p = a.play();
+    if (p) p.catch(() => {});
+  }, [idx, audioOn]);
+
+  // Keyboard
+  useEffect(() => {
+    const h = (e) => {
+      if (e.target.tagName === "INPUT" || e.target.tagName === "SELECT") return;
+      if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") { e.preventDefault(); setIdx(i => Math.min(slides.length - 1, i + 1)); }
+      else if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); setIdx(i => Math.max(0, i - 1)); }
+      else if (e.key.toLowerCase() === "m") setAudioOn(v => !v);
+      else if (e.key.toLowerCase() === "n") setDrawerOpen(v => !v);
+      else if (e.key === "Escape") setDrawerOpen(false);
+      else if (e.key === "Home") setIdx(0);
+      else if (e.key === "End") setIdx(slides.length - 1);
+    };
+    window.addEventListener("keydown", h);
+    return () => window.removeEventListener("keydown", h);
+  }, []);
+
+  const onTouchStart = (e) => { touchRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY, t: Date.now() }; };
+  const onTouchEnd = (e) => {
+    const s = touchRef.current; if (!s) return;
+    const dx = e.changedTouches[0].clientX - s.x;
+    const dy = e.changedTouches[0].clientY - s.y;
+    const dt = Date.now() - s.t;
+    touchRef.current = null;
+    if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.4 && dt < 700) {
+      if (dx < 0) setIdx(i => Math.min(slides.length - 1, i + 1));
+      else setIdx(i => Math.max(0, i - 1));
+    }
+  };
+
+  // Group slides by stream for drawer
+  const groups = [];
+  let lastStream = null;
+  slides.forEach((s, i) => {
+    if (s.stream !== lastStream) {
+      groups.push({ stream: s.stream, name: STREAM_NAMES[s.stream], color: STREAM_COLORS[s.stream], slides: [] });
+      lastStream = s.stream;
+    }
+    groups[groups.length - 1].slides.push({ idx: i, slide: s });
+  });
+
+  // Render slide content
+  const renderSlide = () => {
+    return (
+      <div className={`slide ${cur.kind}`} ref={slideRef} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd} style={{ touchAction: "pan-y" }}>
+        {cur.kicker && <div className="slide-kicker">{cur.kicker}</div>}
+        {cur.title && <h1 className="slide-title">{cur.title}</h1>}
+        {cur.subtitle && <div className="slide-subtitle">{cur.subtitle}</div>}
+        {cur.body && <div className="slide-body">{cur.body}</div>}
+
+        {cur.kind === "cover" && cur.big_number && (
+          <div>
+            <div className="big-number">{cur.big_number}</div>
+            {cur.big_label && <div className="big-label">{cur.big_label}</div>}
+          </div>
+        )}
+
+        {cur.kpis && cur.kpis.length > 0 && (
+          <div className="kpi-grid">
+            {cur.kpis.map((k, i) => (
+              <div key={i} className="kpi">
+                <div className="kpi-k">{k.k}</div>
+                <div className="kpi-v">{k.v}</div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {cur.chart && renderChart(cur.chart)}
+
+        {cur.table && (
+          <div className="tbl-wrap">
+            <div className="tbl-scroll">
+              <table className="tbl">
+                {cur.table.title && (
+                  <caption style={{ fontSize: 11, letterSpacing: "0.2em", color: "#888", textTransform: "uppercase", fontFamily: "monospace", padding: "12px 16px", textAlign: "left", fontWeight: 700 }}>
+                    {cur.table.title}
+                  </caption>
+                )}
+                <thead>
+                  <tr>{cur.table.headers.map((h, i) => <th key={i}>{h}</th>)}</tr>
+                </thead>
+                <tbody>
+                  {cur.table.rows.map((row, ri) => {
+                    const isTotal = String(row[0]).toUpperCase().includes("TOTAL");
+                    return (
+                      <tr key={ri} className={isTotal ? "total-row" : ""}>
+                        {row.map((cell, ci) => (
+                          <td key={ci}>{typeof cell === "number" ? cell.toLocaleString() : cell}</td>
+                        ))}
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
+        {cur.bullets && cur.bullets.length > 0 && (
+          <ul className="bullet-list">
+            {cur.bullets.map((b, i) => <li key={i}>{b}</li>)}
+          </ul>
+        )}
+      </div>
+    );
+  };
+
+  return (
+    <div style={{ "--accent": accent, minHeight: "100vh", background: "#0A0908" }}>
+      {/* TOP BAR */}
+      <div className="topbar">
+        <button className="hamburger" onClick={() => setDrawerOpen(true)} aria-label="Open menu">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <rect x="2" y="4" width="16" height="2" fill="#F5F0E8" rx="1"/>
+            <rect x="2" y="9" width="16" height="2" fill="#F5F0E8" rx="1"/>
+            <rect x="2" y="14" width="16" height="2" fill="#F5F0E8" rx="1"/>
+          </svg>
+        </button>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div className="tb-kicker">{STREAM_NAMES[cur.stream]} · {DATA.title}</div>
+          <div className="tb-title">{cur.title || cur.kicker}</div>
+        </div>
+        <button className={`audio-btn ${audioOn ? "on" : ""}`} onClick={() => setAudioOn(v => !v)} aria-label={audioOn ? "Mute" : "Play"}>
+          <span style={{ fontSize: 14 }}>{audioOn ? "🔊" : "🔇"}</span>
+          <span>{audioOn ? "ON" : "OFF"}</span>
+        </button>
+        <span className="chip">{String(idx + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}</span>
+      </div>
+
+      {/* DRAWER */}
+      <div className={`drawer-overlay ${drawerOpen ? "open" : ""}`} onClick={() => setDrawerOpen(false)} />
+      <div className={`drawer ${drawerOpen ? "open" : ""}`}>
+        <div className="drawer-head">
+          <div>
+            <div style={{ fontSize: 9, letterSpacing: "0.25em", color: "#888", textTransform: "uppercase", fontFamily: "monospace", marginBottom: 4 }}>NAVIGATION</div>
+            <div style={{ fontSize: 15, fontWeight: 700, color: "#F5F0E8" }}>{slides.length} slides</div>
+          </div>
+          <button onClick={() => setDrawerOpen(false)} aria-label="Close" style={{ background: "transparent", border: "1px solid #333", color: "#F5F0E8", width: 36, height: 36, borderRadius: 4, cursor: "pointer", fontSize: 22, lineHeight: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>×</button>
+        </div>
+        <div className="drawer-list">
+          {groups.map((g, gi) => (
+            <div key={gi}>
+              <div className="drawer-stream-header" style={{ color: g.color }}>
+                {g.name.toUpperCase()}
+              </div>
+              {g.slides.map(({ idx: si, slide }) => {
+                const active = si === idx;
+                return (
+                  <button key={si} className="drawer-item" onClick={() => { setIdx(si); setDrawerOpen(false); }} style={{ background: active ? "#1A1A1A" : "transparent", borderLeftColor: active ? slide.color : "transparent" }}>
+                    <div style={{ fontSize: 9, fontFamily: "monospace", color: active ? slide.color : "#666", letterSpacing: "0.1em", marginBottom: 3, fontWeight: 700 }}>
+                      {String(si + 1).padStart(2, "0")} · {slide.kind.toUpperCase()}
+                    </div>
+                    <div style={{ fontSize: 13, fontWeight: 600, color: active ? "#F5F0E8" : "#C8C4BC", letterSpacing: "-0.2px", lineHeight: 1.3 }}>{slide.title || slide.kicker}</div>
+                  </button>
+                );
+              })}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {renderSlide()}
+
+      <audio ref={audioRef} preload="auto" />
+
+      {/* PILL NAV */}
+      <div className="pill-nav">
+        <button onClick={() => setIdx(i => Math.max(0, i - 1))} disabled={idx === 0}>← Prev</button>
+        <button className="next" onClick={() => setIdx(i => Math.min(slides.length - 1, i + 1))} disabled={idx === slides.length - 1}>Next →</button>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+
+<script id="deck-data" type="application/json">{
+  "title": "BiRAGAS \u00b7 Revenue Streams Master Presentation",
+  "subtitle": "Five streams \u00b7 one causal operating system \u00b7 $618.8M by 2030",
+  "slides": [
+    {
+      "id": "s01_cover",
+      "stream": "front",
+      "color": "#C8A560",
+      "kind": "cover",
+      "kicker": "BIRAGAS \u00b7 REVENUE STREAMS \u00b7 MMXXVI",
+      "title": "Revenue Streams",
+      "subtitle": "Master Investor Presentation \u00b7 Five Streams \u00b7 One Causal Operating System",
+      "big_number": "$618.8M",
+      "big_label": "2030 base \u00b7 40.2% EBITDA margin \u00b7 30 markets \u00b7 562 enterprise customers",
+      "narration": "Welcome to the BiRAGAS Revenue Streams Master Presentation. Five revenue streams. One causal operating system for drug design, drug discovery, patient stratification, and Causal Confidence Scoring of outcome truthfulness. By 2030, base case, six hundred eighteen million dollars in annual revenue at forty point two percent EBITDA margin. Every number you'll see is sourced from public ten-K filings, peer-reviewed publications, FDA guidance, and bottom-up models with documented assumptions. Sixty-two slides. Let's begin."
+    },
+    {
+      "id": "s02_thesis",
+      "stream": "front",
+      "color": "#C8A560",
+      "kind": "manifesto",
+      "kicker": "THE THESIS",
+      "title": "BiRAGAS is not another AI tool.",
+      "subtitle": "It is the causal infrastructure underneath every AI tool \u2014 and the operating system that makes drug design, drug discovery, and patient stratification work.",
+      "narration": "BiRAGAS is not another AI drug-discovery company. BiRAGAS is causal infrastructure. The operating system underneath every AI tool the pharma industry already uses \u2014 Recursion, Schr\u00f6dinger, Tempus, BenevolentAI \u2014 all of them. We don't compete with them. We power them. That's the thesis. Five revenue streams are how that thesis monetizes."
+    },
+    {
+      "id": "s03_five_streams",
+      "stream": "front",
+      "color": "#C8A560",
+      "kind": "chart",
+      "kicker": "THE FIVE STREAMS \u00b7 2030 BASE CASE",
+      "title": "$618.8M  \u00b7  Five Streams \u00b7 One Platform",
+      "body": "Each stream monetizes a different layer of the same operating system \u2014 and each compounds independently.",
+      "chart": {
+        "type": "bar-h",
+        "title": "2030 Base Case Revenue by Stream ($M)",
+        "data": [
+          {
+            "label": "I  \u00b7 SaaS Platform Licensing",
+            "value": 290.8,
+            "color": "#3B82F6"
+          },
+          {
+            "label": "II \u00b7 Co-Dev Partnerships",
+            "value": 216.6,
+            "color": "#EF4444"
+          },
+          {
+            "label": "III \u00b7 LDT Diagnostics",
+            "value": 55.7,
+            "color": "#14B8A6"
+          },
+          {
+            "label": "IV \u00b7 Wellness ($90K UHNW)",
+            "value": 37.1,
+            "color": "#C8A560"
+          },
+          {
+            "label": "V \u00b7 CDx Royalty",
+            "value": 18.6,
+            "color": "#A855F7"
+          }
+        ],
+        "unit": "M"
+      },
+      "narration": "Five streams. Stream One, SaaS platform licensing, two hundred ninety point eight million, forty-seven percent of total. Stream Two, co-development partnerships with big pharma, two hundred sixteen point six million, thirty-five percent. Stream Three, laboratory-developed diagnostics, fifty-five point seven million, nine percent. Stream Four, the ninety thousand dollar UHNW wellness subscription, thirty-seven point one million, six percent. Stream Five, companion diagnostic royalties, eighteen point six million, three percent \u2014 the smallest stream in 2030, but the one that compounds longest."
+    },
+    {
+      "id": "s04_inflection",
+      "stream": "front",
+      "color": "#C8A560",
+      "kind": "stat-grid",
+      "kicker": "THE 2028 INFLECTION",
+      "title": "$209.7M revenue \u00b7 $54.5M EBITDA \u00b7 26% margin",
+      "body": "Year three crosses the threshold from investment to compounding. EBITDA-positive by 2027, twenty-six percent margin by 2028, forty-plus percent by 2030.",
+      "kpis": [
+        {
+          "k": "$209.7M",
+          "v": "2028 base revenue"
+        },
+        {
+          "k": "$54.5M",
+          "v": "2028 EBITDA"
+        },
+        {
+          "k": "26%",
+          "v": "2028 EBITDA margin"
+        },
+        {
+          "k": "40.2%",
+          "v": "2030 mature margin"
+        }
+      ],
+      "narration": "Two thousand twenty-eight is the inflection. Two hundred nine point seven million in revenue. Fifty-four point five million EBITDA. Twenty-six percent margin. This is the year the model turns from cash-consuming investment into a self-funding compounding asset. By 2030, margin expands to forty point two percent. Operating leverage modeled bottom-up \u2014 OpEx ratio drops from two hundred thirty-five percent of revenue in year one to fifty-six percent by year five."
+    },
+    {
+      "id": "s05_scenarios",
+      "stream": "front",
+      "color": "#C8A560",
+      "kind": "chart",
+      "kicker": "BULL \u00b7 BASE \u00b7 BEAR",
+      "title": "Sensitivity by Case \u00b7 2030 Revenue and EBITDA",
+      "body": "Bear: $314M / $110M EBITDA \u00b7 Base: $618.8M / $248.8M \u00b7 Bull: $998M / $441M. Even bear is investable.",
+      "chart": {
+        "type": "bar-v-grouped",
+        "title": "2030 Sensitivity \u00b7 3 Scenarios",
+        "x": [
+          "Bear",
+          "Base",
+          "Bull"
+        ],
+        "series": [
+          {
+            "label": "Revenue ($M)",
+            "color": "#3B82F6",
+            "data": [
+              314,
+              618.8,
+              998
+            ]
+          },
+          {
+            "label": "EBITDA ($M)",
+            "color": "#10B981",
+            "data": [
+              110,
+              248.8,
+              441
+            ]
+          }
+        ]
+      },
+      "narration": "Three scenarios. Bear case, three hundred fourteen million revenue, one hundred ten million EBITDA \u2014 still profitable. Base case, six hundred eighteen point eight million revenue, two hundred forty-eight point eight million EBITDA. Bull case, nine hundred ninety-eight million revenue, four hundred forty-one million EBITDA. Asymmetric upside, defended downside."
+    },
+    {
+      "id": "s06_saas_cover",
+      "stream": "saas",
+      "color": "#3B82F6",
+      "kind": "cover",
+      "kicker": "STREAM I OF V",
+      "title": "SaaS Platform Licensing",
+      "subtitle": "The operating system license itself \u00b7 562 customers \u00b7 6 cohorts \u00b7 47% of 2030 base revenue",
+      "big_number": "$290.8M",
+      "big_label": "2030 base \u00b7 82% gross margin \u00b7 132% NRR",
+      "narration": "Stream One. SaaS platform licensing. The largest stream. Two hundred ninety point eight million by 2030, forty-seven percent of total revenue. Five hundred sixty-two customers across six cohorts. Eighty-two percent gross margin. One hundred thirty-two percent net revenue retention. This is the BiRAGAS operating system, licensed."
+    },
+    {
+      "id": "s07_saas_tam",
+      "stream": "saas",
+      "color": "#3B82F6",
+      "kind": "chart",
+      "kicker": "STREAM I \u00b7 MARKET SIZING",
+      "title": "From $50B Envelope to $290.8M Obtainable",
+      "body": "2030 SOM represents 2.15% of the narrow AI-DD platform market and 0.58% of the broad pharma external R&D AI envelope. Deliberately conservative.",
+      "chart": {
+        "type": "bar-h",
+        "title": "AI-Pharma Market Sizing Waterfall \u00b7 2030 ($B)",
+        "data": [
+          {
+            "label": "TAM \u00b7 Broad",
+            "value": 50.0,
+            "color": "#1F2937"
+          },
+          {
+            "label": "CDx market",
+            "value": 18.0,
+            "color": "#374151"
+          },
+          {
+            "label": "TAM \u00b7 Narrow",
+            "value": 13.5,
+            "color": "#4B5563"
+          },
+          {
+            "label": "Target ID",
+            "value": 11.0,
+            "color": "#6B7280"
+          },
+          {
+            "label": "SAM \u00b7 BiRAGAS-addressable",
+            "value": 9.5,
+            "color": "#3B82F6"
+          },
+          {
+            "label": "RWE",
+            "value": 8.0,
+            "color": "#60A5FA"
+          },
+          {
+            "label": "Trial design",
+            "value": 6.5,
+            "color": "#93C5FD"
+          },
+          {
+            "label": "Lead discovery",
+            "value": 5.5,
+            "color": "#BFDBFE"
+          },
+          {
+            "label": "Causal evidence",
+            "value": 5.0,
+            "color": "#DBEAFE"
+          },
+          {
+            "label": "SOM \u00b7 BiRAGAS 2030",
+            "value": 0.29,
+            "color": "#C8A560"
+          }
+        ],
+        "unit": "B"
+      },
+      "narration": "Top of the funnel, the broad pharma external R&D AI envelope, fifty billion dollars by 2030 \u2014 sourced from McKinsey, Deloitte, BCG. Narrow that to AI drug-discovery platform tools, thirteen and a half billion. Serviceable addressable market specific to BiRAGAS, nine and a half billion. Serviceable obtainable market, two hundred ninety point eight million. Two point one five percent share of the narrow market. Zero point five eight percent share of the broad envelope. Conservative, defended, room to grow."
+    },
+    {
+      "id": "s08_saas_bigpharma",
+      "stream": "saas",
+      "color": "#3B82F6",
+      "kind": "table",
+      "kicker": "STREAM I \u00b7 TOP-20 BIG PHARMA",
+      "title": "Every top-20 pharma has a named AI program",
+      "body": "Internal computational platforms + external partnerships. BiRAGAS does not replace them \u2014 it becomes the causal substrate underneath them.",
+      "table": {
+        "title": "Top-10 Big Pharma \u00b7 Named AI Programs",
+        "headers": [
+          "Pharma",
+          "Internal AI Program",
+          "Est. R&D Spend ($B)",
+          "BiRAGAS Entry Vector"
+        ],
+        "rows": [
+          [
+            "Pfizer",
+            "Concerto data platform",
+            11.0,
+            "R&D Innovation team"
+          ],
+          [
+            "Roche/Genentech",
+            "Prescient AI \u00b7 Roche Data Analytics",
+            14.0,
+            "gRED Computational Sciences"
+          ],
+          [
+            "Novartis",
+            "data42 \u00b7 NIBR Computational Sciences",
+            9.5,
+            "data42 integration"
+          ],
+          [
+            "AstraZeneca",
+            "Centre for Genomics Research",
+            10.9,
+            "CGR scientific exchange"
+          ],
+          [
+            "Eli Lilly",
+            "Lilly Research Labs \u00b7 OIDD",
+            9.3,
+            "Verge Genomics intro"
+          ],
+          [
+            "Merck",
+            "MSD Computational Biology",
+            13.6,
+            "Oncology Innovation Hub"
+          ],
+          [
+            "Sanofi",
+            "Sanofi AI CoE Toronto \u00b7 AIDA",
+            7.2,
+            "Toronto AI CoE"
+          ],
+          [
+            "GSK",
+            "AI/ML Hub \u00b7 Open Targets",
+            6.0,
+            "Open Targets consortium"
+          ],
+          [
+            "AbbVie",
+            "AbbVie AI/ML group \u00b7 ARCH",
+            7.6,
+            "ARCH partnership"
+          ],
+          [
+            "BMS",
+            "Translational Medicine Bioinformatics",
+            9.2,
+            "Informatics & Predictive"
+          ]
+        ]
+      },
+      "narration": "Every top-twenty pharma has a named internal AI program plus a stack of external partnerships. Pfizer's Concerto. Roche's Prescient. Novartis's data42. AstraZeneca's Centre for Genomics Research. Lilly's research labs. Merck, Sanofi, GSK with Open Targets, AbbVie, Bristol-Myers Squibb. These are not pilots. They are budgeted line items. BiRAGAS does not replace them. BiRAGAS becomes the causal substrate underneath them. Thirty Big Pharma customers by 2030 is sixty percent of the top-fifty pharma R&D budgets. Penetration that's conservative by design, defended account by account."
+    },
+    {
+      "id": "s09_saas_midcap",
+      "stream": "saas",
+      "color": "#3B82F6",
+      "kind": "stat-grid",
+      "kicker": "STREAM I \u00b7 MID-CAP BIOTECH",
+      "title": "30 named mid-cap biotechs \u00b7 130 customers by 2030",
+      "body": "Vertex, Regeneron, BioMarin, Moderna, Alnylam, Ionis, Incyte, Seagen \u2014 and twenty-two others with active AI / computational initiatives. $0.70M ASP per AbCellera 10-K benchmark.",
+      "kpis": [
+        {
+          "k": "30",
+          "v": "named mid-cap targets"
+        },
+        {
+          "k": "130",
+          "v": "customers by 2030"
+        },
+        {
+          "k": "$0.70M",
+          "v": "ASP (AbCellera benchmark)"
+        },
+        {
+          "k": "$91M",
+          "v": "2030 cohort revenue"
+        }
+      ],
+      "narration": "Thirty named mid-cap biotechs with AI or computational initiatives. Vertex, Regeneron, BioMarin, Moderna, Alnylam, Ionis, Incyte, Seagen and twenty-two more. Each has twenty to fifty million dollars in computational spend, no causal-inference layer, and a need for FDA-quality evidence. BiRAGAS is the gap. One hundred thirty mid-cap customers by 2030. Five point two percent of the global mid-cap pool. Ninety-one million dollars in cohort revenue \u2014 the largest single cohort by 2030."
+    },
+    {
+      "id": "s10_saas_channels",
+      "stream": "saas",
+      "color": "#3B82F6",
+      "kind": "stat-grid",
+      "kicker": "STREAM I \u00b7 CHANNELS",
+      "title": "CROs \u00b7 AMCs \u00b7 Government",
+      "body": "32 CROs embedding BiRAGAS into client deliverables. 80 AMCs at $0.15M. 60 government agencies including NIH, NCI, BARDA, FDA-CDER, DoD.",
+      "kpis": [
+        {
+          "k": "32",
+          "v": "CROs (IQVIA, Parexel, ICON+)"
+        },
+        {
+          "k": "80",
+          "v": "AMCs (Dana-Farber, MD Anderson+)"
+        },
+        {
+          "k": "60",
+          "v": "government agencies"
+        },
+        {
+          "k": "$59M",
+          "v": "combined 2030 revenue"
+        }
+      ],
+      "narration": "Three channel categories. CROs \u2014 IQVIA, Parexel, ICON, Syneos, Labcorp, Charles River \u2014 embed BiRAGAS into client deliverables. Thirty-two CROs by 2030 at one million dollars each. Academic medical centers \u2014 Dana-Farber, MD Anderson, Mayo, Cleveland Clinic, Memorial Sloan Kettering and seventy-five more \u2014 at one hundred fifty thousand per institution. Government \u2014 NIH, NCI, BARDA, FDA-CDER, Department of Defense \u2014 at two hundred fifty thousand each. Channel-leveraged distribution, public-sector credibility, annuity revenue."
+    },
+    {
+      "id": "s11_saas_ramp",
+      "stream": "saas",
+      "color": "#3B82F6",
+      "kind": "chart",
+      "kicker": "STREAM I \u00b7 5-YEAR CUSTOMER RAMP",
+      "title": "50 \u2192 562 customers \u00b7 11.2\u00d7 growth",
+      "body": "Six cohorts compound in parallel. 2026 starts at 50 paying customers / $27M. 2028 inflection at 276 / $152M. 2030 at 562 / $290.8M.",
+      "chart": {
+        "type": "bar-v-grouped",
+        "title": "6-Cohort Customer Ramp \u00b7 2026 \u2192 2030",
+        "x": [
+          "2026",
+          "2027",
+          "2028",
+          "2029",
+          "2030"
+        ],
+        "series": [
+          {
+            "label": "Small Biotech",
+            "color": "#93C5FD",
+            "data": [
+              18,
+              55,
+              112,
+              182,
+              230
+            ]
+          },
+          {
+            "label": "Mid-cap",
+            "color": "#60A5FA",
+            "data": [
+              10,
+              28,
+              62,
+              100,
+              130
+            ]
+          },
+          {
+            "label": "AMCs",
+            "color": "#3B82F6",
+            "data": [
+              10,
+              22,
+              42,
+              64,
+              80
+            ]
+          },
+          {
+            "label": "Government",
+            "color": "#2563EB",
+            "data": [
+              6,
+              14,
+              28,
+              46,
+              60
+            ]
+          },
+          {
+            "label": "CROs",
+            "color": "#1D4ED8",
+            "data": [
+              3,
+              8,
+              16,
+              26,
+              32
+            ]
+          },
+          {
+            "label": "Big Pharma",
+            "color": "#C8A560",
+            "data": [
+              3,
+              8,
+              16,
+              24,
+              30
+            ]
+          }
+        ]
+      },
+      "narration": "Customer ramp across six cohorts. Year one, fifty customers, twenty-seven million revenue. Year three inflection, two hundred seventy-six customers, one hundred fifty-two million. Year five, five hundred sixty-two customers, two hundred ninety point eight million. Eleven-point-two times customer growth over five years. Big Pharma grows ten times. Mid-cap thirteen times. Small biotech almost thirteen times. Not curves drawn to a target \u2014 bottom-up builds from named accounts and channel partner programs."
+    },
+    {
+      "id": "s12_saas_asp",
+      "stream": "saas",
+      "color": "#3B82F6",
+      "kind": "chart",
+      "kicker": "STREAM I \u00b7 PRICING BENCHMARKS",
+      "title": "ASP benchmarked to public 10-K disclosures",
+      "body": "BiRAGAS Big Pharma at $1.80M is 18% below Schr\u00f6dinger's $2.20M FY24 10-K. Mid-cap at $0.70M is midpoint of AbCellera's published range. Every price defendable in any due diligence.",
+      "chart": {
+        "type": "bar-v-grouped",
+        "title": "ASP \u00b7 BiRAGAS vs Public Comparables ($M)",
+        "x": [
+          "Big Pharma",
+          "Mid-cap",
+          "Small",
+          "CROs",
+          "AMCs",
+          "Gov"
+        ],
+        "series": [
+          {
+            "label": "BiRAGAS",
+            "color": "#3B82F6",
+            "data": [
+              1.8,
+              0.7,
+              0.2,
+              1.0,
+              0.15,
+              0.25
+            ]
+          },
+          {
+            "label": "Public (10-K)",
+            "color": "#C8A560",
+            "data": [
+              2.2,
+              0.75,
+              0.25,
+              1.2,
+              0.2,
+              0.25
+            ]
+          }
+        ]
+      },
+      "narration": "Pricing is benchmarked, not invented. Big Pharma at one point eight million \u2014 eighteen percent below Schr\u00f6dinger's two point two zero million ten-K disclosure. Mid-cap at seven hundred thousand \u2014 midpoint of AbCellera's published range. CROs at one million \u2014 discounted seventeen percent from Recursion's disclosure to support channel ramp. Small biotech, academic medical centers, government \u2014 all priced inside published peer ranges. Every ASP can be defended against a public ten-K filing. No magic numbers."
+    },
+    {
+      "id": "s13_saas_pnl",
+      "stream": "saas",
+      "color": "#3B82F6",
+      "kind": "table",
+      "kicker": "STREAM I \u00b7 5-YEAR P&L",
+      "title": "$22M \u2192 $290.8M \u00b7 82% gross margin throughout",
+      "body": "Cohort revenue builds + 18% blended COGS + recurring NRR expansion uplift. 2030 base case held to $290.8M after explicit risk adjustments.",
+      "table": {
+        "title": "Stream I \u00b7 5-Year P&L ($M)",
+        "headers": [
+          "Line Item",
+          "2026",
+          "2027",
+          "2028",
+          "2029",
+          "2030"
+        ],
+        "rows": [
+          [
+            "Big Pharma revenue",
+            5.4,
+            14.4,
+            28.8,
+            43.2,
+            54.0
+          ],
+          [
+            "Mid-cap revenue",
+            7.0,
+            19.6,
+            43.4,
+            70.0,
+            91.0
+          ],
+          [
+            "Small biotech revenue",
+            3.6,
+            11.0,
+            22.4,
+            36.4,
+            46.0
+          ],
+          [
+            "CRO revenue",
+            3.0,
+            8.0,
+            16.0,
+            26.0,
+            32.0
+          ],
+          [
+            "AMC revenue",
+            1.5,
+            3.3,
+            6.3,
+            9.6,
+            12.0
+          ],
+          [
+            "Government revenue",
+            1.5,
+            3.5,
+            7.0,
+            11.5,
+            15.0
+          ],
+          [
+            "STREAM I TOTAL",
+            22.0,
+            59.8,
+            123.9,
+            196.7,
+            250.0
+          ],
+          [
+            "NRR expansion uplift",
+            0,
+            5,
+            20,
+            35,
+            40.8
+          ],
+          [
+            "STREAM I TOTAL (w/ NRR)",
+            22.0,
+            64.8,
+            143.9,
+            231.7,
+            290.8
+          ],
+          [
+            "COGS (~18%)",
+            4.0,
+            11.7,
+            25.9,
+            41.7,
+            52.3
+          ],
+          [
+            "Gross Profit",
+            18.0,
+            53.1,
+            118.0,
+            190.0,
+            238.5
+          ]
+        ]
+      },
+      "narration": "Five-year P&L, cohort by cohort. Year one, twenty-two million revenue, four million COGS, eighteen million gross profit, eighty-two percent gross margin. Year three inflection, one hundred forty-three point nine million revenue with expansion uplift, twenty-five point nine million COGS, one hundred eighteen million gross profit. Year five, two hundred ninety point eight million revenue, fifty-two million COGS, two hundred thirty-eight million gross profit. Net revenue retention compounds from one hundred eighteen percent in year two to one hundred thirty-two percent in year five. That's the expansion engine."
+    },
+    {
+      "id": "s14_saas_sensitivity",
+      "stream": "saas",
+      "color": "#3B82F6",
+      "kind": "chart",
+      "kicker": "STREAM I \u00b7 BEAR \u00b7 BASE \u00b7 BULL",
+      "title": "Even Stream I bear case is $148M / 78% margin",
+      "body": "Penetration multipliers \u2014 bear \u00d70.5, base \u00d71.0, bull \u00d71.6. EBITDA stays positive in every scenario from 2027 onward.",
+      "chart": {
+        "type": "bar-v-grouped",
+        "title": "Stream I 2030 \u00b7 Bear \u00b7 Base \u00b7 Bull",
+        "x": [
+          "Revenue ($M)",
+          "EBITDA ($M)",
+          "Margin %"
+        ],
+        "series": [
+          {
+            "label": "Bear",
+            "color": "#EF4444",
+            "data": [
+              148,
+              73,
+              49
+            ]
+          },
+          {
+            "label": "Base",
+            "color": "#3B82F6",
+            "data": [
+              290.8,
+              160,
+              55
+            ]
+          },
+          {
+            "label": "Bull",
+            "color": "#10B981",
+            "data": [
+              467,
+              285,
+              61
+            ]
+          }
+        ]
+      },
+      "narration": "Penetration math, three cases. Base case 2030 is sixty percent of the top-fifty Big Pharma, five point two percent of mid-cap biotech, twenty-seven percent of top-fifty CROs, twenty percent of US academic medical centers. Bear case halves penetration \u2014 yields one hundred forty-eight million revenue, seventy-three million EBITDA, seventy-eight percent gross margin. Bull case multiplies by one point six \u2014 four hundred sixty-seven million revenue, two hundred eighty-five million EBITDA. Even bear case is investable."
+    },
+    {
+      "id": "s15_saas_share",
+      "stream": "saas",
+      "color": "#3B82F6",
+      "kind": "chart",
+      "kicker": "STREAM I \u00b7 MARKET SHARE",
+      "title": "Same revenue \u00b7 different denominators \u00b7 all conservative",
+      "body": "BiRAGAS does not need to dominate any market. It needs to be the substrate underneath all of them.",
+      "chart": {
+        "type": "bar-h",
+        "title": "BiRAGAS 2030 Share by Market Definition (%)",
+        "data": [
+          {
+            "label": "Broad pharma R&D AI",
+            "value": 0.58,
+            "color": "#1F2937"
+          },
+          {
+            "label": "Narrow AI-DD platform",
+            "value": 2.15,
+            "color": "#3B82F6"
+          },
+          {
+            "label": "Target ID & Validation",
+            "value": 0.83,
+            "color": "#60A5FA"
+          },
+          {
+            "label": "Lead Discovery + Chem",
+            "value": 0.82,
+            "color": "#93C5FD"
+          },
+          {
+            "label": "Top-20 pharma AI/R&D",
+            "value": 0.54,
+            "color": "#C8A560"
+          },
+          {
+            "label": "Real-World Evidence",
+            "value": 0.38,
+            "color": "#4B5563"
+          },
+          {
+            "label": "Companion Diagnostics",
+            "value": 0.1,
+            "color": "#6B7280"
+          }
+        ],
+        "unit": "%"
+      },
+      "narration": "Same revenue, different denominators. BiRAGAS at two hundred ninety point eight million is zero point five eight percent of the broad fifty billion AI R&D envelope, two point one five percent of the thirteen and a half billion narrow market. Under three percent of any single market definition. BiRAGAS does not need to dominate any market. It needs to be the substrate underneath all of them."
+    },
+    {
+      "id": "s16_saas_targets",
+      "stream": "saas",
+      "color": "#3B82F6",
+      "kind": "list",
+      "kicker": "STREAM I \u00b7 2026 CONVERSION TARGETS",
+      "title": "$12.7M in named first-year pipeline",
+      "body": "Eight first-close targets with stakeholder, entry vector, and quarter-by-quarter conversion plan.",
+      "bullets": [
+        "Roche Genentech \u2014 gRED Computational Sciences (Prescient Design accelerator)",
+        "Pfizer R&D Innovation team \u2014 Concerto integration",
+        "AstraZeneca Centre for Genomics Research \u2014 scientific exchange",
+        "Eli Lilly Research Labs \u2014 via Verge Genomics introduction",
+        "Novartis data42 program \u2014 Microsoft AI cloud overlap",
+        "MD Anderson Cancer Center \u2014 first AMC anchor",
+        "Dana-Farber Cancer Institute \u2014 pediatric oncology wedge",
+        "Memorial Sloan Kettering \u2014 Foundation Medicine connector"
+      ],
+      "narration": "Twenty named conversion targets with timelines and expected annual recurring revenue. Roche Genentech. Pfizer R&D Innovation. AstraZeneca's Centre for Genomics Research. Eli Lilly via Verge Genomics. Novartis data42. MD Anderson. Dana-Farber. Memorial Sloan Kettering. Every account has a named entry vector, a stakeholder, and a quarter-by-quarter conversion plan. First eight closes in year one represent twelve point seven million in committed pipeline. This is a pipeline, not a wishlist."
+    },
+    {
+      "id": "s17_saas_comparables",
+      "stream": "saas",
+      "color": "#3B82F6",
+      "kind": "chart",
+      "kicker": "STREAM I \u00b7 COMPARABLES",
+      "title": "BiRAGAS is the infrastructure \u00b7 they are the applications",
+      "body": "Public comparables \u2014 Tempus AI, Schr\u00f6dinger, Recursion, AbCellera \u2014 are all applications built on top of biological data. BiRAGAS sits underneath.",
+      "chart": {
+        "type": "bar-h",
+        "title": "AI-Pharma Comparables \u00b7 2024 Disclosed Revenue ($M)",
+        "data": [
+          {
+            "label": "Tempus AI",
+            "value": 700,
+            "color": "#3B82F6"
+          },
+          {
+            "label": "Schr\u00f6dinger",
+            "value": 200,
+            "color": "#60A5FA"
+          },
+          {
+            "label": "Recursion",
+            "value": 100,
+            "color": "#93C5FD"
+          },
+          {
+            "label": "AbCellera",
+            "value": 40,
+            "color": "#BFDBFE"
+          },
+          {
+            "label": "Exscientia",
+            "value": 20,
+            "color": "#C8A560"
+          },
+          {
+            "label": "BenevolentAI",
+            "value": 10,
+            "color": "#D4AF37"
+          }
+        ],
+        "unit": "M"
+      },
+      "narration": "Comparable AI-pharma companies. Tempus at seven hundred million. Schr\u00f6dinger at two hundred million. Recursion at one hundred million with the twelve billion dollar Roche deal. AbCellera at forty million. BenevolentAI, Exscientia, Insilico, Owkin, Insitro, Atomwise. Every one of them is an application. BiRAGAS is the infrastructure underneath. We don't compete with these companies \u2014 we power them."
+    },
+    {
+      "id": "s18_codev_cover",
+      "stream": "codev",
+      "color": "#EF4444",
+      "kind": "cover",
+      "kicker": "STREAM II OF V",
+      "title": "Co-Development Partnerships",
+      "subtitle": "24 active programs \u00b7 $216.6M \u00b7 the stream that compounds longest",
+      "big_number": "$216.6M",
+      "big_label": "2030 base \u00b7 35% of total \u00b7 royalties continue post-2030",
+      "narration": "Stream Two. Co-development partnerships. The stream that compounds longest. Two hundred sixteen point six million by 2030, thirty-five percent of total revenue. Twenty-four active co-development programs by 2030. The economics: upfront payments, eight milestone gates totaling thirty-eight million per program, plus low-single-digit royalties that continue paying for ten to fifteen years post-launch. The model only counts revenue through 2030 \u2014 the royalty tail is unmodeled upside."
+    },
+    {
+      "id": "s19_codev_arch",
+      "stream": "codev",
+      "color": "#EF4444",
+      "kind": "stat-grid",
+      "kicker": "STREAM II \u00b7 DEAL ARCHITECTURE",
+      "title": "$38M total per program over 8 milestone gates",
+      "body": "Typical structure: $5M upfront + $4M IND-enabling + $5M IND filed + $7M Phase II readout + $8M Phase III + $7M FDA submission + $2M approval + 2-4% net royalty 10-year tail.",
+      "kpis": [
+        {
+          "k": "$5M",
+          "v": "Typical upfront"
+        },
+        {
+          "k": "$38M",
+          "v": "Total milestones \u00b7 8 gates"
+        },
+        {
+          "k": "2-4%",
+          "v": "Net royalty rate"
+        },
+        {
+          "k": "10-15yr",
+          "v": "Post-launch royalty tail"
+        }
+      ],
+      "narration": "Deal architecture is standard pharma. Five million dollar upfront. Eight milestone gates totaling thirty-eight million across the development pipeline. Pre-clinical IND-enabling milestone, IND filed, Phase one completion, Phase two readout, Phase three initiation, FDA submission, approval, post-launch. Plus a two to four percent net royalty for ten to fifteen years after launch. This is the same structure Recursion negotiated with Roche, Schr\u00f6dinger with BMS and Lilly, Verge with Eli Lilly. Standard architecture, defensible economics."
+    },
+    {
+      "id": "s20_codev_milestones",
+      "stream": "codev",
+      "color": "#EF4444",
+      "kind": "table",
+      "kicker": "STREAM II \u00b7 MILESTONE SCHEDULE",
+      "title": "8 development gates \u00b7 $38M total payments",
+      "body": "Risk-adjusted by program-stage success probability. Royalty tail begins at Year +1 post-approval and runs through patent life.",
+      "table": {
+        "title": "Milestone Schedule per Co-Dev Program",
+        "headers": [
+          "Gate",
+          "Trigger",
+          "Payment",
+          "Risk-adj %",
+          "Risk-adj $"
+        ],
+        "rows": [
+          [
+            "1 \u00b7 Upfront",
+            "Deal signing",
+            "$5M",
+            "100%",
+            "$5.0M"
+          ],
+          [
+            "2 \u00b7 IND-enabling",
+            "Tox + CMC ready",
+            "$4M",
+            "85%",
+            "$3.4M"
+          ],
+          [
+            "3 \u00b7 IND filed",
+            "FDA acceptance",
+            "$5M",
+            "70%",
+            "$3.5M"
+          ],
+          [
+            "4 \u00b7 Phase II readout",
+            "Efficacy signal",
+            "$7M",
+            "45%",
+            "$3.2M"
+          ],
+          [
+            "5 \u00b7 Phase III initiation",
+            "Phase III start",
+            "$8M",
+            "35%",
+            "$2.8M"
+          ],
+          [
+            "6 \u00b7 FDA submission",
+            "BLA/NDA filed",
+            "$7M",
+            "30%",
+            "$2.1M"
+          ],
+          [
+            "7 \u00b7 FDA approval",
+            "Marketing auth",
+            "$2M",
+            "25%",
+            "$0.5M"
+          ],
+          [
+            "8 \u00b7 Royalty trigger",
+            "First commercial sale",
+            "2-4% net",
+            "\u2014",
+            "Tail"
+          ],
+          [
+            "Total per program",
+            "",
+            "$38M + royalty",
+            "",
+            "~$20.5M risk-adj"
+          ]
+        ]
+      },
+      "narration": "Eight gate milestone schedule. Five million upfront at one hundred percent probability. Four million for IND-enabling work at eighty-five percent. Five million on IND filing at seventy percent. Seven million on Phase Two readout at forty-five percent \u2014 this is where the biggest pharma-industry attrition happens. Eight million on Phase Three initiation at thirty-five percent. Seven million on FDA submission at thirty percent. Two million on approval at twenty-five percent. Plus the royalty tail at two to four percent net. Risk-adjusted expected value per program is about twenty point five million."
+    },
+    {
+      "id": "s21_codev_partners",
+      "stream": "codev",
+      "color": "#EF4444",
+      "kind": "list",
+      "kicker": "STREAM II \u00b7 NAMED PROGRAM TARGETS",
+      "title": "Top-15 Big Pharma co-dev candidates with named entry vectors",
+      "bullets": [
+        "Roche Genentech \u00b7 oncology AI/causal layer \u00b7 post-Recursion deal architecture",
+        "Pfizer \u00b7 post-Seagen oncology integration \u00b7 causal evidence layer",
+        "Novartis \u00b7 cardiovascular pipeline gap \u00b7 cell-and-gene cost scaling",
+        "Eli Lilly \u00b7 post-Verge ALS scaling \u00b7 Mounjaro pipeline successor",
+        "Merck \u00b7 Keytruda LOE 2028 oncology successor portfolio",
+        "AstraZeneca \u00b7 $80B-by-2030 target \u00b7 oncology + rare disease",
+        "BMS \u00b7 post-Bristol-Squibb causal architecture",
+        "GSK \u00b7 AI/ML Hub + Open Targets causal extension",
+        "Sanofi \u00b7 AIDA platform + biologic causal layer",
+        "AbbVie \u00b7 post-Humira pipeline diversification",
+        "Bayer \u00b7 cardio-renal \u00b7 oncology pipeline expansion",
+        "Takeda \u00b7 rare disease causal stratification",
+        "Boehringer Ingelheim \u00b7 BI-CompBio integration",
+        "Amgen \u00b7 post-deCODE genetics extension",
+        "Gilead \u00b7 oncology + virology causal layer"
+      ],
+      "narration": "Fifteen named co-dev candidates. Roche Genentech. Pfizer. Novartis. Eli Lilly. Merck. AstraZeneca. Bristol-Myers Squibb. GSK. Sanofi. AbbVie. Bayer. Takeda. Boehringer Ingelheim. Amgen. Gilead. Each with a named entry vector \u2014 Roche's gRED Computational Sciences, Pfizer's R&D Innovation, Novartis's NIBR. The deal architecture is standard. The substrate underneath the deal \u2014 BiRAGAS's causal layer \u2014 is what's new."
+    },
+    {
+      "id": "s22_codev_comparables",
+      "stream": "codev",
+      "color": "#EF4444",
+      "kind": "table",
+      "kicker": "STREAM II \u00b7 COMPARABLE DEALS",
+      "title": "Public pharma-AI deals \u00b7 2020-2024 disclosed",
+      "body": "Every deal validates the model's assumptions. Recursion-Roche $12B is the upper bound, Verge-Lilly $694M is the median. BiRAGAS deals will sit between $50M and $500M total value.",
+      "table": {
+        "title": "Comparable Public AI-Pharma Co-Dev Deals",
+        "headers": [
+          "Year",
+          "Partners",
+          "Total Value",
+          "Upfront",
+          "Royalty"
+        ],
+        "rows": [
+          [
+            "2024",
+            "Recursion \u2194 Roche-Genentech",
+            "$12.0B",
+            "$150M",
+            "mid-single"
+          ],
+          [
+            "2024",
+            "Tempus \u2194 AstraZeneca",
+            "$200M",
+            "$200M",
+            "embedded"
+          ],
+          [
+            "2023",
+            "BMS \u2194 Schr\u00f6dinger",
+            "$2.7B",
+            "$55M",
+            "2.5-4.5%"
+          ],
+          [
+            "2024",
+            "Eli Lilly \u2194 Verge Genomics (ALS)",
+            "$694M",
+            "$25M",
+            "2-4%"
+          ],
+          [
+            "2022",
+            "Insilico \u2194 Sanofi",
+            "$1.2B",
+            "$21.5M",
+            "royalty stack"
+          ],
+          [
+            "2023",
+            "BenevolentAI \u2194 Merck KGaA",
+            "$594M",
+            "$65M",
+            "2-4%"
+          ],
+          [
+            "2022",
+            "Atomwise \u2194 Sanofi",
+            "$1.0B",
+            "$20M",
+            "royalty"
+          ],
+          [
+            "2022",
+            "Iktos \u2194 Merck",
+            "$300M",
+            "undisclosed",
+            "royalty"
+          ]
+        ]
+      },
+      "narration": "Comparable public deals. Recursion-Roche, twelve billion dollars total value, signed 2024. Tempus-AstraZeneca, two hundred million, embedded royalty. BMS-Schr\u00f6dinger, two point seven billion, two point five to four point five percent royalty. Lilly-Verge Genomics, six hundred ninety-four million for ALS. Insilico-Sanofi, one point two billion. BenevolentAI-Merck KGaA, five hundred ninety-four million. These are the comparables. BiRAGAS deals will sit between fifty million and five hundred million total value per program, conservatively modeled."
+    },
+    {
+      "id": "s23_codev_pnl",
+      "stream": "codev",
+      "color": "#EF4444",
+      "kind": "chart",
+      "kicker": "STREAM II \u00b7 5-YEAR P&L",
+      "title": "$10M \u2192 $216.6M \u00b7 weighted toward 2030 milestone hits",
+      "body": "Stream II revenue lags Stream I because milestones cluster in years 3-5. Royalty tail begins late 2029 and accelerates post-2030 (unmodeled).",
+      "chart": {
+        "type": "line",
+        "title": "Stream II Revenue Build \u00b7 2026 \u2192 2030 ($M)",
+        "x": [
+          "2026",
+          "2027",
+          "2028",
+          "2029",
+          "2030"
+        ],
+        "series": [
+          {
+            "label": "Upfront + early milestones",
+            "color": "#EF4444",
+            "data": [
+              10,
+              22,
+              40,
+              55,
+              75
+            ]
+          },
+          {
+            "label": "Late milestones + royalty",
+            "color": "#C8102E",
+            "data": [
+              0,
+              0,
+              17,
+              43,
+              141.6
+            ]
+          },
+          {
+            "label": "Stream II TOTAL",
+            "color": "#7C2D12",
+            "data": [
+              10,
+              22,
+              57,
+              98,
+              216.6
+            ]
+          }
+        ]
+      },
+      "narration": "Five-year P&L for Stream Two. Year one, ten million from upfront payments. Year two, twenty-two million. Year three inflection, fifty-seven million as the early Phase Two milestones start hitting. Year four, ninety-eight million. Year five, two hundred sixteen point six million as multiple Phase Three milestones plus first royalty receipts compound. Royalty tail begins late 2029 and accelerates post-2030 \u2014 that's the unmodeled upside."
+    },
+    {
+      "id": "s24_codev_royalty",
+      "stream": "codev",
+      "color": "#EF4444",
+      "kind": "chart",
+      "kicker": "STREAM II \u00b7 ROYALTY COMPOUNDING",
+      "title": "1-drug \u00b7 5-drug \u00b7 10-drug royalty scenarios post-2030",
+      "body": "If just one program of the 24 reaches market, the royalty tail alone replaces 2030 Stream II revenue by 2033. Ten programs reaching market = $500M+ annual recurring by 2035.",
+      "chart": {
+        "type": "line",
+        "title": "Royalty Tail \u00b7 Annual Contribution Post-2030 ($M)",
+        "x": [
+          "2031",
+          "2032",
+          "2033",
+          "2034",
+          "2035"
+        ],
+        "series": [
+          {
+            "label": "1-drug scenario",
+            "color": "#FCA5A5",
+            "data": [
+              15,
+              35,
+              60,
+              90,
+              120
+            ]
+          },
+          {
+            "label": "5-drug scenario",
+            "color": "#EF4444",
+            "data": [
+              40,
+              95,
+              170,
+              260,
+              350
+            ]
+          },
+          {
+            "label": "10-drug scenario",
+            "color": "#7C2D12",
+            "data": [
+              60,
+              150,
+              280,
+              420,
+              580
+            ]
+          }
+        ]
+      },
+      "narration": "Royalty compounding. Three scenarios for how many of the twenty-four programs reach market. One drug scenario, royalty tail alone hits one hundred twenty million annual by 2035. Five drug scenario, three hundred fifty million annual. Ten drug scenario, five hundred eighty million annual. Even the one drug scenario alone replaces Stream Two's 2030 revenue by 2033. The compounding is structural \u2014 this is what makes co-dev the highest-lifetime-value stream in the portfolio."
+    },
+    {
+      "id": "s25_codev_rates",
+      "stream": "codev",
+      "color": "#EF4444",
+      "kind": "table",
+      "kicker": "STREAM II \u00b7 ROYALTY RATES BY TA",
+      "title": "Per-therapeutic-area pricing benchmarks",
+      "table": {
+        "title": "Royalty Rates by Therapeutic Area",
+        "headers": [
+          "Therapeutic Area",
+          "BiRAGAS Royalty",
+          "Comparable Range",
+          "Source"
+        ],
+        "rows": [
+          [
+            "Oncology",
+            "3.0-4.5%",
+            "2.5-5%",
+            "Recursion-Roche, BMS-Schr\u00f6dinger"
+          ],
+          [
+            "Rare Disease",
+            "2.5-4.0%",
+            "2-4%",
+            "Verge-Lilly, Alnylam comps"
+          ],
+          [
+            "Cardio-renal/DKD",
+            "2.0-3.5%",
+            "2-4%",
+            "BenevolentAI, market average"
+          ],
+          [
+            "Autoimmune/IBD",
+            "2.5-3.5%",
+            "2-4%",
+            "Insilico-Sanofi"
+          ],
+          [
+            "Neuroscience",
+            "2.0-3.0%",
+            "1.5-3.5%",
+            "Verge ALS, Biogen comps"
+          ],
+          [
+            "Infectious / AMR",
+            "2.5-4.0%",
+            "2-5%",
+            "BARDA-funded programs"
+          ]
+        ]
+      },
+      "narration": "Royalty rates by therapeutic area. Oncology at three to four point five percent \u2014 Recursion-Roche, BMS-Schr\u00f6dinger benchmarks. Rare disease at two point five to four \u2014 Verge-Lilly comparables. Cardio-renal at two to three point five. Autoimmune at two point five to three point five. Neuroscience at two to three. Infectious disease and AMR at two point five to four. Every rate sits inside published peer ranges. Negotiable upward as BiRAGAS evidence layer adds value."
+    },
+    {
+      "id": "s26_codev_thesis",
+      "stream": "codev",
+      "color": "#EF4444",
+      "kind": "manifesto",
+      "kicker": "STREAM II \u00b7 THE THESIS",
+      "title": "Co-Dev is the stream that compounds longest.",
+      "subtitle": "The five-year model captures only the upfront and milestones. The decade-long royalty tail is structurally unmodeled upside \u2014 and it could exceed every other stream combined by 2035.",
+      "narration": "Stream Two's thesis. The five-year model captures only the upfront payments and milestone gates. The royalty tail \u2014 ten to fifteen years per drug, two to four percent net \u2014 is structurally unmodeled. With twenty-four programs at varying maturity, the post-2030 royalty stack could exceed every other stream's revenue combined by 2035. This is the compounding asset."
+    },
+    {
+      "id": "s27_codev_milestones2",
+      "stream": "codev",
+      "color": "#EF4444",
+      "kind": "chart",
+      "kicker": "STREAM II \u00b7 MILESTONE TIMING",
+      "title": "24 programs \u00b7 5 stages by 2030",
+      "body": "The pipeline diversifies risk. By 2030, six programs in Phase III, ten in Phase II, eight earlier \u2014 staggered timing means milestones land every year.",
+      "chart": {
+        "type": "bar-h",
+        "title": "24 Programs by Stage \u00b7 2030 Snapshot",
+        "data": [
+          {
+            "label": "Pre-clinical / IND-enabling",
+            "value": 4,
+            "color": "#FCA5A5"
+          },
+          {
+            "label": "Phase I",
+            "value": 4,
+            "color": "#F87171"
+          },
+          {
+            "label": "Phase II",
+            "value": 10,
+            "color": "#EF4444"
+          },
+          {
+            "label": "Phase III",
+            "value": 6,
+            "color": "#DC2626"
+          },
+          {
+            "label": "Marketed / royalty",
+            "value": 0,
+            "color": "#7C2D12"
+          }
+        ]
+      },
+      "narration": "Pipeline timing diversifies risk. By 2030, four programs pre-clinical, four in Phase One, ten in Phase Two \u2014 the largest single bucket \u2014 six in Phase Three, none yet marketed. Staggered timing means milestones land every year. The fifty percent Phase Two attrition rate is built into every program's risk-adjusted value. Diversification across twenty-four programs means no single failure breaks the model."
+    },
+    {
+      "id": "s28_ldt_cover",
+      "stream": "ldt",
+      "color": "#14B8A6",
+      "kind": "cover",
+      "kicker": "STREAM III OF V",
+      "title": "LDT Diagnostics",
+      "subtitle": "10 disease lines \u00b7 75,100 tests/year by 2030 \u00b7 67% gross margin \u00b7 CLIA-validated",
+      "big_number": "$55.7M",
+      "big_label": "2030 base case \u00b7 $90.1M Y5 mature potential \u00b7 10-line portfolio",
+      "narration": "Stream Three. Laboratory-developed diagnostics. Ten disease lines launched in staggered cohorts between 2026 and 2030. By year five, seventy-five thousand tests per year. Two thousand thirty base case, fifty-five point seven million. The mature, post-2030 potential is ninety point one million. Sixty-seven percent gross margin. CLIA-validated, payer-reimbursed, and most importantly \u2014 this is the surface that makes every other stream work."
+    },
+    {
+      "id": "s29_ldt_grid",
+      "stream": "ldt",
+      "color": "#14B8A6",
+      "kind": "table",
+      "kicker": "STREAM III \u00b7 THE 10 DISEASE LINES",
+      "title": "Each launch staggered by clinical readiness",
+      "body": "ASP ranges from $650 (Wound/AMR) to $2,800 (Pediatric AML). Y5-mature potential is $90.1M; 2030 ramp-adjusted is $60.0M; canonical base case is $55.7M after 7% risk discount.",
+      "table": {
+        "title": "10 LDT Disease Lines \u00b7 ASP \u00b7 Volume \u00b7 2030 Contribution",
+        "headers": [
+          "#",
+          "Disease Line",
+          "Launch",
+          "ASP",
+          "Y5 Vol",
+          "Y5 Mature",
+          "2030 (ramp-adj)"
+        ],
+        "rows": [
+          [
+            "01",
+            "AML stratification",
+            "2026",
+            "$1,800",
+            "5,000",
+            "$9.0M",
+            "$9.0M"
+          ],
+          [
+            "02",
+            "DKD progression risk",
+            "2026",
+            "$950",
+            "12,000",
+            "$11.4M",
+            "$11.4M"
+          ],
+          [
+            "03",
+            "Wound care / AMR",
+            "2027",
+            "$650",
+            "32,000",
+            "$20.8M",
+            "$15.6M"
+          ],
+          [
+            "04",
+            "Autoimmune biologic response",
+            "2027",
+            "$2,200",
+            "8,000",
+            "$17.6M",
+            "$13.2M"
+          ],
+          [
+            "05",
+            "Alzheimer biomarker panel",
+            "2028",
+            "$1,600",
+            "5,500",
+            "$8.8M",
+            "$4.4M"
+          ],
+          [
+            "06",
+            "IBD biologic stratification",
+            "2028",
+            "$1,900",
+            "3,500",
+            "$6.7M",
+            "$3.4M"
+          ],
+          [
+            "07",
+            "Post-COVID autoimmune",
+            "2029",
+            "$1,400",
+            "4,000",
+            "$5.6M",
+            "$1.4M"
+          ],
+          [
+            "08",
+            "Pancreatic risk score",
+            "2029",
+            "$1,400",
+            "2,500",
+            "$3.5M",
+            "$0.9M"
+          ],
+          [
+            "09",
+            "Melanoma neoadjuvant",
+            "2030",
+            "$2,500",
+            "1,800",
+            "$4.5M",
+            "$0.5M"
+          ],
+          [
+            "10",
+            "Pediatric AML / rare",
+            "2030",
+            "$2,800",
+            "800",
+            "$2.2M",
+            "$0.2M"
+          ],
+          [
+            "\u2014",
+            "STREAM III TOTAL",
+            "",
+            "",
+            "75,100",
+            "$90.1M",
+            "$60.0M"
+          ]
+        ]
+      },
+      "narration": "Ten disease lines. Disease one and two launch in 2026 \u2014 acute myeloid leukemia stratification at eighteen hundred dollars, diabetic kidney disease progression at nine hundred fifty. Lines three and four launch 2027 \u2014 wound care antimicrobial resistance, autoimmune biologic response. Lines five and six in 2028 \u2014 Alzheimer biomarker panel, IBD biologic stratification. Lines seven and eight in 2029 \u2014 post-COVID autoimmune, pancreatic risk score. Lines nine and ten in 2030 \u2014 melanoma neoadjuvant, pediatric AML. Together: seventy-five thousand one hundred tests per year, ninety point one million in mature revenue, sixty million in ramp-adjusted 2030 revenue, fifty-five point seven million base case after the seven percent risk discount."
+    },
+    {
+      "id": "s30_ldt_first4",
+      "stream": "ldt",
+      "color": "#14B8A6",
+      "kind": "list",
+      "kicker": "STREAM III \u00b7 FIRST FOUR LINES",
+      "title": "2026-2027 launches drive 70% of 2030 revenue",
+      "body": "The first four lines \u2014 AML, DKD, Wound/AMR, Autoimmune \u2014 generate $49.2M of the $55.7M 2030 base case. Maximum maturity by 2030. Anchored at named clinical sites.",
+      "bullets": [
+        "AML stratification ($9M) \u2014 FLT3 / IDH / NPM1 cohort assignment \u00b7 anchor: MD Anderson, Dana-Farber, Memorial Sloan Kettering",
+        "DKD progression risk ($11.4M) \u2014 KIM-1 + nephrin + 99 in-house DEG panel \u00b7 anchor: USC, Mayo, Cleveland Clinic",
+        "Wound care / AMR ($15.6M) \u2014 chronic non-healing + resistance profile \u00b7 anchor: BARDA-funded sites",
+        "Autoimmune biologic response ($13.2M) \u2014 pre-treatment biologic responder prediction \u00b7 anchor: Cleveland Clinic, Brigham"
+      ],
+      "narration": "The first four disease lines drive seventy percent of 2030 revenue. AML stratification \u2014 nine million from one cohort assignment decision. DKD progression risk \u2014 eleven point four million from a kidney disease score that uses our in-house ninety-nine differentially expressed gene panel. Wound care antimicrobial resistance \u2014 fifteen point six million from BARDA-funded sites. Autoimmune biologic response \u2014 thirteen point two million from pre-treatment responder prediction. Forty-nine point two million from the first four lines. Each is anchored at three to five named clinical partner institutions."
+    },
+    {
+      "id": "s31_ldt_last6",
+      "stream": "ldt",
+      "color": "#14B8A6",
+      "kind": "list",
+      "kicker": "STREAM III \u00b7 LATER LAUNCHES",
+      "title": "2028-2030 lines are growth, not 2030 revenue",
+      "body": "Lines five through ten contribute $6.5M to 2030 but $40.9M at maturity. These are the lines that bend the post-2030 ramp.",
+      "bullets": [
+        "Alzheimer biomarker panel \u2014 5,500 tests/yr at $1,600 = $8.8M mature",
+        "IBD biologic stratification \u2014 3,500 tests at $1,900 = $6.7M mature",
+        "Post-COVID autoimmune phenotype \u2014 4,000 tests at $1,400 = $5.6M mature",
+        "Pancreatic multi-omics risk \u2014 2,500 tests at $1,400 = $3.5M mature",
+        "Melanoma neoadjuvant responder \u2014 1,800 tests at $2,500 = $4.5M mature",
+        "Pediatric AML / rare-disease causal panel \u2014 800 tests at $2,800 = $2.2M mature"
+      ],
+      "narration": "The later launches are growth, not 2030 revenue. Alzheimer biomarker panel, eight point eight million mature. IBD biologic stratification, six point seven million. Post-COVID autoimmune, five point six million. Pancreatic risk score, three point five million. Melanoma neoadjuvant, four point five million. Pediatric AML, two point two million. Together, forty point nine million at maturity. These are the lines that bend the post-2030 ramp."
+    },
+    {
+      "id": "s32_ldt_reimburse",
+      "stream": "ldt",
+      "color": "#14B8A6",
+      "kind": "stat-grid",
+      "kicker": "STREAM III \u00b7 REIMBURSEMENT",
+      "title": "CPT-coded \u00b7 Medicare-covered \u00b7 payer-validated",
+      "body": "CLIA validation in months 1-6 of each launch. Medicare LCD coverage in months 6-12. Top-5 commercial payer contracts in months 12-18. Standard path, well-documented.",
+      "kpis": [
+        {
+          "k": "CLIA",
+          "v": "validation 6 months"
+        },
+        {
+          "k": "Medicare LCD",
+          "v": "6-12 month path"
+        },
+        {
+          "k": "5 payers",
+          "v": "target by month 18"
+        },
+        {
+          "k": "$1,800",
+          "v": "avg ASP across lines"
+        }
+      ],
+      "narration": "Reimbursement is the single biggest LDT risk. We've engineered around it. CLIA validation in months one through six of each launch. Medicare local coverage determination in months six through twelve. Top-five commercial payer contracts in months twelve through eighteen. Average ASP across all ten lines is eighteen hundred dollars \u2014 sits below most molecular diagnostics, defensible to payers. This is the standard regulatory and reimbursement path, well-documented, with named labs already engaged."
+    },
+    {
+      "id": "s33_ldt_partners",
+      "stream": "ldt",
+      "color": "#14B8A6",
+      "kind": "list",
+      "kicker": "STREAM III \u00b7 CLINICAL PARTNERS",
+      "title": "3-5 named clinical anchor institutions per disease line",
+      "body": "The institutions that will (a) clinically validate the test, (b) deliver first patient samples, (c) publish the clinical-utility evidence, and (d) drive guideline adoption.",
+      "bullets": [
+        "AML \u2014 MD Anderson, Dana-Farber, Memorial Sloan Kettering, Fred Hutch, Cleveland Clinic",
+        "DKD \u2014 USC (Ayass), Mayo, Cleveland Clinic, Brigham, Joslin Diabetes Center",
+        "Wound/AMR \u2014 BARDA portfolio sites, Wound Care Center network",
+        "Autoimmune \u2014 Brigham, Cleveland Clinic, Mass General, UCSF",
+        "Alzheimer \u2014 Mayo, Penn, UCSF Memory Center, BU CTE Center",
+        "IBD \u2014 Mount Sinai, Mayo IBD Center, Cleveland Clinic Digestive",
+        "Pediatric AML \u2014 St Jude, Children's Hospital of Philadelphia, Boston Children's"
+      ],
+      "narration": "Three to five named clinical anchor institutions per disease line. For AML: MD Anderson, Dana-Farber, Memorial Sloan Kettering, Fred Hutch, Cleveland Clinic. For DKD: USC, Mayo, Cleveland Clinic, Brigham, Joslin Diabetes Center. For wound care and AMR: BARDA-portfolio sites. For autoimmune: Brigham, Cleveland Clinic, Mass General, UCSF. For Alzheimer: Mayo, Penn, UCSF Memory Center. For IBD: Mount Sinai, Mayo IBD Center. For pediatric AML: St Jude, Children's of Philadelphia, Boston Children's. These are the institutions that publish, that set guidelines, that drive adoption."
+    },
+    {
+      "id": "s34_ldt_pnl",
+      "stream": "ldt",
+      "color": "#14B8A6",
+      "kind": "table",
+      "kicker": "STREAM III \u00b7 5-YEAR P&L",
+      "title": "$3M \u2192 $60M gross \u2192 $55.7M base case",
+      "body": "Two 2030 totals shown \u2014 both are correct, the difference is risk treatment. Gross sums each disease line at ramp-adjusted maturity. Base case applies a 7% conservatism discount on Y4-Y5 launches.",
+      "table": {
+        "title": "Stream III \u00b7 5-Year P&L ($M)",
+        "headers": [
+          "Line Item",
+          "2026",
+          "2027",
+          "2028",
+          "2029",
+          "2030"
+        ],
+        "rows": [
+          [
+            "Disease lines live (#)",
+            2,
+            4,
+            6,
+            8,
+            10
+          ],
+          [
+            "Cumulative tests/year",
+            2500,
+            12000,
+            35000,
+            58000,
+            75100
+          ],
+          [
+            "STREAM III GROSS",
+            3.0,
+            10.5,
+            26.5,
+            44.1,
+            60.0
+          ],
+          [
+            "Risk discount (~7%)",
+            0.2,
+            0.7,
+            1.9,
+            3.1,
+            4.3
+          ],
+          [
+            "STREAM III BASE CASE",
+            2.8,
+            9.8,
+            24.6,
+            41.0,
+            55.7
+          ],
+          [
+            "COGS (~33% blended)",
+            0.9,
+            3.2,
+            8.1,
+            13.5,
+            18.4
+          ],
+          [
+            "Gross Profit",
+            1.9,
+            6.6,
+            16.5,
+            27.5,
+            37.3
+          ],
+          [
+            "Gross Margin",
+            "67%",
+            "67%",
+            "67%",
+            "67%",
+            "67%"
+          ]
+        ]
+      },
+      "narration": "Stream Three five-year P&L. Year one, three million revenue gross, two point eight base case. Year three inflection, twenty-six point five gross, twenty-four point six base case. Year five, sixty million gross, fifty-five point seven base case after the seven percent risk discount. Sixty-seven percent gross margin throughout. The two thousand thirty base case of fifty-five point seven million is the canonical number cited everywhere \u2014 the sixty million gross figure is kept on the P&L sheet for full auditability."
+    },
+    {
+      "id": "s35_ldt_y5mature",
+      "stream": "ldt",
+      "color": "#14B8A6",
+      "kind": "manifesto",
+      "kicker": "STREAM III \u00b7 Y5 MATURE POTENTIAL",
+      "title": "$90.1M at full ramp post-2030.",
+      "subtitle": "Year-5 mature is the addressable revenue once every disease line reaches steady-state \u2014 typically year 7-8 from launch. This is the post-2030 ramp built into the LDT thesis.",
+      "narration": "The mature potential of Stream Three is ninety point one million dollars. That's the addressable revenue once every disease line reaches steady-state \u2014 typically year seven or eight from launch. The 2030 base case of fifty-five point seven million is the realized revenue at that point in time. The gap between fifty-five point seven and ninety point one is built into the post-2030 ramp."
+    },
+    {
+      "id": "s36_ldt_clinical",
+      "stream": "ldt",
+      "color": "#14B8A6",
+      "kind": "stat-grid",
+      "kicker": "STREAM III \u00b7 WHY THIS MATTERS",
+      "title": "Stream III is the surface that makes every other stream work.",
+      "body": "The LDT footprint creates clinical-utility evidence, payer-coverage data, and guideline citations \u2014 all of which feed the CDx (Stream V) royalty pipeline and the Co-Dev (Stream II) clinical narrative.",
+      "kpis": [
+        {
+          "k": "clinical utility",
+          "v": "evidence for CDx submissions"
+        },
+        {
+          "k": "payer coverage",
+          "v": "data for biopharma negotiations"
+        },
+        {
+          "k": "guideline citations",
+          "v": "for Co-Dev partnership pitches"
+        },
+        {
+          "k": "real patients",
+          "v": "the touch BiRAGAS uniquely has"
+        }
+      ],
+      "narration": "Why Stream Three matters even though it's the smallest dollar. The LDT footprint creates four things: clinical utility evidence the FDA wants for CDx submissions; payer coverage data Big Pharma needs for biologic negotiations; guideline citations that anchor every Co-Dev partnership pitch; and real patients touched, which is the differentiator BiRAGAS uniquely has versus pure-AI competitors. Without Stream Three, Streams Two and Five don't work. That's why it's not optional."
+    },
+    {
+      "id": "s37_ldt_thesis",
+      "stream": "ldt",
+      "color": "#14B8A6",
+      "kind": "manifesto",
+      "kicker": "STREAM III \u00b7 THE THESIS",
+      "title": "Ten wedges into clinical billing, each anchored by a therapeutic decision.",
+      "subtitle": "Stream III's $55.7M is the smallest of the streams in absolute terms \u2014 and the surface that makes every other stream credible. No clinical utility without it.",
+      "narration": "Stream Three's thesis. Ten wedges into clinical billing, each anchored by a specific therapeutic decision use case. The fifty-five point seven million dollar 2030 revenue is the smallest stream \u2014 and the surface that makes every other stream credible. Without the LDT footprint, the co-development sales motion has no anchor in clinical use. The CDx royalty pipeline has no validation pathway. The SaaS platform's clinical credibility is unproven. The LDT investment is structural, not financial."
+    },
+    {
+      "id": "s38_well_cover",
+      "stream": "wellness",
+      "color": "#C8A560",
+      "kind": "cover",
+      "kicker": "STREAM IV OF V",
+      "title": "Wellness \u00b7 $90K UHNW Subscription",
+      "subtitle": "412 subscribers by 2030 \u00b7 72% gross margin \u00b7 3 channels (DTC + Clinic + HNW)",
+      "big_number": "$37.1M",
+      "big_label": "2030 base \u00b7 $90K ARR \u00b7 412 active subscribers",
+      "narration": "Stream Four. The ninety thousand dollar annual UHNW wellness subscription. Four hundred twelve active subscribers by 2030. Thirty-seven point one million in revenue. Seventy-two percent gross margin. Sold through three channels: direct-to-consumer at the top, a clinic-affiliated channel through longevity practices, and a high-net-worth concierge channel through family offices and wealth advisors."
+    },
+    {
+      "id": "s39_well_thesis",
+      "stream": "wellness",
+      "color": "#C8A560",
+      "kind": "stat-grid",
+      "kicker": "STREAM IV \u00b7 THE $90K THESIS",
+      "title": "CCS-as-a-service for individuals",
+      "body": "Causal Confidence Scoring of personal health outcomes is a product sold by the dollar to individuals. UHNW pricing reflects multi-omics integration, longitudinal monitoring, and concierge interpretation.",
+      "kpis": [
+        {
+          "k": "$90K/yr",
+          "v": "annual subscription"
+        },
+        {
+          "k": "412",
+          "v": "subscribers by 2030"
+        },
+        {
+          "k": "180 / 150 / 82",
+          "v": "DTC / Clinic / HNW mix"
+        },
+        {
+          "k": "72%",
+          "v": "gross margin"
+        }
+      ],
+      "narration": "The ninety thousand dollar thesis. Causal Confidence Scoring of personal health outcomes is a product sold by the dollar to individuals. UHNW pricing reflects three things: multi-omics integration that no consumer wellness product offers, longitudinal monitoring with a clinical team in the loop, and concierge interpretation that costs more than the technology. Forty-two thousand for the technology, forty-eight thousand for the service. This is concierge medicine, not retail wellness."
+    },
+    {
+      "id": "s40_well_channels",
+      "stream": "wellness",
+      "color": "#C8A560",
+      "kind": "chart",
+      "kicker": "STREAM IV \u00b7 THREE CHANNELS",
+      "title": "DTC \u00b7 Clinic \u00b7 HNW Concierge",
+      "body": "180 DTC subscribers through digital marketing and platform partnerships. 150 through clinic-affiliated channels at longevity practices. 82 through family offices and wealth advisors.",
+      "chart": {
+        "type": "bar-v-grouped",
+        "title": "3-Channel Subscriber Ramp \u00b7 2026 \u2192 2030",
+        "x": [
+          "2026",
+          "2027",
+          "2028",
+          "2029",
+          "2030"
+        ],
+        "series": [
+          {
+            "label": "DTC",
+            "color": "#FCD34D",
+            "data": [
+              8,
+              25,
+              70,
+              125,
+              180
+            ]
+          },
+          {
+            "label": "Clinic",
+            "color": "#C8A560",
+            "data": [
+              15,
+              45,
+              85,
+              125,
+              150
+            ]
+          },
+          {
+            "label": "HNW Concierge",
+            "color": "#92400E",
+            "data": [
+              7,
+              15,
+              25,
+              50,
+              82
+            ]
+          }
+        ]
+      },
+      "narration": "Three channels for distribution. Direct-to-consumer channel through digital marketing, platform partnerships, and longevity media \u2014 one hundred eighty subscribers by 2030. Clinic-affiliated channel through partner practices in the longevity space \u2014 one hundred fifty subscribers. High-net-worth concierge channel through family offices, wealth advisors, and physician concierges \u2014 eighty-two subscribers. Together: four hundred twelve subscribers, thirty-seven point one million in annual recurring revenue."
+    },
+    {
+      "id": "s41_well_concierge",
+      "stream": "wellness",
+      "color": "#C8A560",
+      "kind": "list",
+      "kicker": "STREAM IV \u00b7 UHNW CONCIERGE MODEL",
+      "title": "What the $90K actually buys",
+      "bullets": [
+        "Full multi-omics workup at intake \u2014 genome, transcriptome, proteome, metabolome, microbiome",
+        "Quarterly multi-omics reassessments with longitudinal causal modeling",
+        "BiRAGAS Causal Confidence Score for top-10 personal health outcomes",
+        "Direct concierge physician access (annual; quarterly call cadence)",
+        "Wearable integration + continuous monitoring stream",
+        "Annual brand-multiplier therapy + supplement protocol with NPV-modeled value",
+        "Family office reporting structure (annual health-NPV report)",
+        "Causal-evidence prescription guidance with referring physician"
+      ],
+      "narration": "What the ninety thousand actually buys. A full multi-omics workup at intake \u2014 genome, transcriptome, proteome, metabolome, microbiome. Quarterly multi-omics reassessments. The BiRAGAS Causal Confidence Score for the top-ten personal health outcomes that matter to that individual. Direct concierge physician access. Wearable integration. An annual therapy and supplement protocol with NPV-modeled value. A family office reporting structure. Causal-evidence prescription guidance. This is what concierge medicine looks like when it's powered by causal infrastructure."
+    },
+    {
+      "id": "s42_well_comparables",
+      "stream": "wellness",
+      "color": "#C8A560",
+      "kind": "table",
+      "kicker": "STREAM IV \u00b7 TOP COMPARABLES",
+      "title": "Where BiRAGAS sits in the wellness landscape",
+      "body": "BiRAGAS avoids Forward Health's mistake (sub-$150/mo, closed Nov 2024 after raising ~$700M) and Function Health's mistake ($499/yr mass-market). The $90K UHNW tier has clear precedent.",
+      "table": {
+        "title": "Top Wellness / Longevity Comparables",
+        "headers": [
+          "Comparable",
+          "Pricing",
+          "Model",
+          "Position"
+        ],
+        "rows": [
+          [
+            "Forward Health",
+            "$149/mo",
+            "Tech-first primary",
+            "Closed Nov 2024 - too cheap"
+          ],
+          [
+            "Function Health",
+            "$499/yr",
+            "Mass-market panel",
+            "No UHNW tier"
+          ],
+          [
+            "One Medical",
+            "$2,400/yr",
+            "Concierge primary",
+            "Acquired by Amazon"
+          ],
+          [
+            "Sollis Health",
+            "$3,500/mo",
+            "Premium concierge",
+            "UHNW-adjacent"
+          ],
+          [
+            "Tia Health",
+            "$3,000/yr",
+            "Women's concierge",
+            "Premium retail"
+          ],
+          [
+            "Modern Age",
+            "$3,000/yr",
+            "Longevity DTC",
+            "Adjacent positioning"
+          ],
+          [
+            "Ezra",
+            "$1,500/yr",
+            "Full-body MRI",
+            "Single-modality"
+          ],
+          [
+            "Q.bio",
+            "$3,500/yr",
+            "Quantitative MRI",
+            "Single-modality"
+          ],
+          [
+            "BiRAGAS Wellness",
+            "$90,000/yr",
+            "Multi-omics + causal",
+            "UHNW concierge"
+          ]
+        ]
+      },
+      "narration": "Top comparables in the wellness landscape. Forward Health priced too cheap at one hundred forty-nine a month and closed November 2024 after raising seven hundred million. Function Health at four hundred ninety-nine a year is mass-market with no UHNW tier. One Medical at twenty-four hundred a year was acquired by Amazon. Sollis Health at three thousand five hundred a month is concierge UHNW-adjacent. Tia, Modern Age, Ezra, Q.bio all sit between one and four thousand dollars a year. BiRAGAS Wellness at ninety thousand a year is in a different category \u2014 multi-omics plus causal modeling, UHNW concierge tier, structurally above all retail comparables."
+    },
+    {
+      "id": "s43_well_target",
+      "stream": "wellness",
+      "color": "#C8A560",
+      "kind": "stat-grid",
+      "kicker": "STREAM IV \u00b7 TARGET CUSTOMER",
+      "title": "Family offices \u00b7 biotech founders \u00b7 physician concierges",
+      "body": "Penetration target is 0.5% of US households with $5M+ net worth \u2014 that's the bull case. Base case is 0.16% \u2014 412 of ~250,000 addressable households.",
+      "kpis": [
+        {
+          "k": "250,000",
+          "v": "US households $5M+ net worth"
+        },
+        {
+          "k": "0.16%",
+          "v": "base case penetration"
+        },
+        {
+          "k": "$90,000",
+          "v": "ASP per subscriber"
+        },
+        {
+          "k": "$37.1M",
+          "v": "base case 2030 revenue"
+        }
+      ],
+      "narration": "Target customer profile. Family offices managing single-family wealth. Biotech founders and senior executives. Physician concierges and medical concierge networks. Senior partners at private equity and venture capital firms. Penetration target is zero point five percent of US households with five million dollars plus in net worth \u2014 that's the bull case. Base case is zero point one six percent \u2014 four hundred twelve of approximately two hundred fifty thousand addressable households. Pricing scales naturally with the wealth tier."
+    },
+    {
+      "id": "s44_well_pnl",
+      "stream": "wellness",
+      "color": "#C8A560",
+      "kind": "table",
+      "kicker": "STREAM IV \u00b7 5-YEAR P&L",
+      "title": "$2.7M \u2192 $37.1M \u00b7 72% gross margin",
+      "body": "Linear scaling on subscriber count. ARR per subscriber held at $90K. COGS ~28% reflects clinic split + execution + concierge service.",
+      "table": {
+        "title": "Stream IV \u00b7 5-Year P&L ($M)",
+        "headers": [
+          "Line Item",
+          "2026",
+          "2027",
+          "2028",
+          "2029",
+          "2030"
+        ],
+        "rows": [
+          [
+            "DTC subscribers",
+            8,
+            25,
+            70,
+            125,
+            180
+          ],
+          [
+            "Clinic subscribers",
+            15,
+            45,
+            85,
+            125,
+            150
+          ],
+          [
+            "HNW subscribers",
+            7,
+            15,
+            25,
+            50,
+            82
+          ],
+          [
+            "TOTAL SUBSCRIBERS",
+            30,
+            85,
+            180,
+            300,
+            412
+          ],
+          [
+            "ARR per subscriber",
+            90000,
+            90000,
+            90000,
+            90000,
+            90000
+          ],
+          [
+            "STREAM IV REVENUE ($M)",
+            2.7,
+            7.65,
+            16.2,
+            27,
+            37.1
+          ],
+          [
+            "COGS (~28%)",
+            0.76,
+            2.14,
+            4.54,
+            7.56,
+            10.4
+          ],
+          [
+            "Gross Profit",
+            1.94,
+            5.51,
+            11.66,
+            19.44,
+            26.7
+          ],
+          [
+            "Gross Margin",
+            "72%",
+            "72%",
+            "72%",
+            "72%",
+            "72%"
+          ]
+        ]
+      },
+      "narration": "Stream Four five-year P&L. Year one, thirty subscribers, two point seven million. Year three, one hundred eighty subscribers, sixteen point two million. Year five, four hundred twelve subscribers, thirty-seven point one million. ARR per subscriber held flat at ninety thousand dollars. COGS at twenty-eight percent reflects the clinic split, concierge service delivery, and execution overhead. Seventy-two percent gross margin throughout \u2014 the highest margin recurring stream in BiRAGAS after the SaaS platform."
+    },
+    {
+      "id": "s45_well_brand",
+      "stream": "wellness",
+      "color": "#C8A560",
+      "kind": "manifesto",
+      "kicker": "STREAM IV \u00b7 STRATEGIC VALUE",
+      "title": "The brand multiplier \u2014 wellness is the consumer face of BiRAGAS.",
+      "subtitle": "The $37.1M is the financial line. The strategic value is that high-net-worth subscribers introduce BiRAGAS into board rooms, investor circles, and family-office healthcare decisions far above the platform's commercial weight.",
+      "narration": "Stream Four's strategic value goes beyond the thirty-seven million dollar P&L line. High-net-worth subscribers introduce BiRAGAS into board rooms, investor circles, family-office healthcare decisions, and biotech founder networks far above the platform's commercial weight. Every wellness subscriber is a potential introducer to a SaaS prospect, a Co-Dev pharma exec, or a CDx commercialization partner. The brand-multiplier value is hard to model but easy to feel \u2014 and it's why Stream Four is in the deck."
+    },
+    {
+      "id": "s46_cdx_cover",
+      "stream": "cdx",
+      "color": "#A855F7",
+      "kind": "cover",
+      "kicker": "STREAM V OF V",
+      "title": "CDx \u00b7 Companion Diagnostic Royalty",
+      "subtitle": "3 active CDx by 2030 \u00b7 12 by 2035 \u00b7 $951M NPV at 10% discount",
+      "big_number": "$18.6M",
+      "big_label": "2030 base \u00b7 95% gross margin \u00b7 structurally back-loaded",
+      "narration": "Stream Five. Companion diagnostic royalty. The smallest stream in 2030 \u2014 eighteen point six million. The largest compounding asset by 2035. Three active CDx by 2030. Twelve active CDx by 2035. Royalty rates of three to seven percent on companion diagnostic test sales. Ninety-five percent gross margin \u2014 near zero marginal cost. Net present value of the 2035 trajectory is nine hundred fifty-one million at a ten percent discount rate."
+    },
+    {
+      "id": "s47_cdx_market",
+      "stream": "cdx",
+      "color": "#A855F7",
+      "kind": "chart",
+      "kicker": "STREAM V \u00b7 MARKET",
+      "title": "$18B CDx market by 2030 \u00b7 17% CAGR",
+      "body": "Fortune Business Insights, Markets & Markets, Precedence Research \u2014 all converge on $18B by 2030. BiRAGAS captures the biomarker IP layer, not the IVD layer.",
+      "chart": {
+        "type": "bar-v",
+        "title": "Global CDx Market 2024 \u2192 2030 ($B)",
+        "data": [
+          {
+            "label": "2024",
+            "value": 7.0,
+            "color": "#C4B5FD"
+          },
+          {
+            "label": "2026",
+            "value": 9.5,
+            "color": "#A78BFA"
+          },
+          {
+            "label": "2028",
+            "value": 13.0,
+            "color": "#8B5CF6"
+          },
+          {
+            "label": "2030",
+            "value": 18.0,
+            "color": "#A855F7"
+          }
+        ],
+        "unit": "B"
+      },
+      "narration": "The companion diagnostic market. Seven billion dollars in 2024, growing to eighteen billion by 2030 at seventeen percent compound annual growth. Sources converge: Fortune Business Insights, Markets and Markets, Precedence Research. BiRAGAS captures the biomarker intellectual property layer, not the IVD layer. The IVD partner commercializes the test. BiRAGAS collects royalty on the biomarker for the patent life \u2014 typically twelve to fifteen years."
+    },
+    {
+      "id": "s48_cdx_framework",
+      "stream": "cdx",
+      "color": "#A855F7",
+      "kind": "stat-grid",
+      "kicker": "STREAM V \u00b7 REGULATORY",
+      "title": "21 CFR \u00a7809.40 \u00b7 CDx co-approval framework",
+      "body": "Drug + CDx co-approval is the FDA's mature pathway for biomarker-driven therapeutics. BiRAGAS biomarker \u2192 IVD partner test \u2192 drug approval \u2192 automatic CDx claim.",
+      "kpis": [
+        {
+          "k": "21 CFR \u00a7809.40",
+          "v": "CDx regulatory pathway"
+        },
+        {
+          "k": "BQP",
+          "v": "FDA Biomarker Qualification Program"
+        },
+        {
+          "k": "Breakthrough Device",
+          "v": "available designation"
+        },
+        {
+          "k": "12-15 yr",
+          "v": "patent life royalty tail"
+        }
+      ],
+      "narration": "The regulatory framework. Twenty-one CFR section eight oh nine point forty is the FDA's mature pathway for drug-plus-CDx co-approval. The Biomarker Qualification Program \u2014 BQP \u2014 provides the mechanistic-evidence framework BiRAGAS feeds into. Breakthrough Device designation accelerates approval timelines. Patent life on biomarker IP runs twelve to fifteen years, providing structural royalty protection. This is not novel regulatory territory \u2014 it's a well-traveled FDA pathway."
+    },
+    {
+      "id": "s49_cdx_partners",
+      "stream": "cdx",
+      "color": "#A855F7",
+      "kind": "table",
+      "kicker": "STREAM V \u00b7 IVD PARTNERS",
+      "title": "8 named IVD partners diversify commercialization risk",
+      "table": {
+        "title": "IVD Partner Network for BiRAGAS CDx Royalty",
+        "headers": [
+          "IVD Partner",
+          "Position",
+          "Volume Tier",
+          "Anchor TA"
+        ],
+        "rows": [
+          [
+            "Foundation Medicine (Roche)",
+            "Anchor partner",
+            "300+ indications",
+            "Oncology"
+          ],
+          [
+            "Guardant Health",
+            "Liquid biopsy leader",
+            "High-volume",
+            "Oncology"
+          ],
+          [
+            "Roche Diagnostics",
+            "Tissue-Dx",
+            "High-volume",
+            "Multi-TA"
+          ],
+          [
+            "Myriad Genetics",
+            "Hereditary",
+            "PARP anchor",
+            "Oncology / hereditary"
+          ],
+          [
+            "Tempus AI",
+            "Clinical-omics",
+            "Aggregator",
+            "Multi-TA"
+          ],
+          [
+            "Caris Life Sciences",
+            "Comprehensive",
+            "High-volume",
+            "Oncology"
+          ],
+          [
+            "NeoGenomics",
+            "Hematopathology",
+            "Specialized",
+            "Hem-onc"
+          ],
+          [
+            "Quest Diagnostics",
+            "Large-scale",
+            "Mass-volume",
+            "Multi-TA"
+          ]
+        ]
+      },
+      "narration": "Eight named IVD partners diversify commercialization risk. Foundation Medicine, the anchor partner \u2014 Roche-owned, three hundred plus co-Dx indications, the highest-volume CDx footprint in oncology. Guardant Health, the liquid biopsy leader. Roche Diagnostics for tissue-Dx volume. Myriad Genetics for hereditary cancer and PARP anchor. Tempus AI for clinical-omics aggregation. Caris Life Sciences for comprehensive oncology. NeoGenomics for hematopathology. Quest Diagnostics for mass-volume distribution. Foundation Medicine is the largest concentration but also the most strategically aligned. Backup IVD partners spread risk across multiple channels."
+    },
+    {
+      "id": "s50_cdx_royalty",
+      "stream": "cdx",
+      "color": "#A855F7",
+      "kind": "table",
+      "kicker": "STREAM V \u00b7 ROYALTY STRUCTURE",
+      "title": "3-7% net royalty on IVD partner test sales",
+      "body": "Royalty rate scales with biomarker exclusivity, IP strength, and clinical utility evidence. Premium rates for first-in-class biomarkers with BiRAGAS causal-evidence support.",
+      "table": {
+        "title": "Royalty Rate Structure by Biomarker Class",
+        "headers": [
+          "Biomarker Class",
+          "Royalty",
+          "Volume Driver",
+          "Example"
+        ],
+        "rows": [
+          [
+            "First-in-class causal",
+            "5-7%",
+            "High clinical utility",
+            "Novel target validation"
+          ],
+          [
+            "Predictive biomarker",
+            "4-5%",
+            "Therapeutic decision",
+            "Drug response prediction"
+          ],
+          [
+            "Prognostic biomarker",
+            "3-4%",
+            "Risk stratification",
+            "Disease progression"
+          ],
+          [
+            "Pharmacodynamic",
+            "3-4%",
+            "Treatment monitoring",
+            "Therapy adjustment"
+          ],
+          [
+            "Companion Dx (FDA)",
+            "4-6%",
+            "Regulatory-mandated",
+            "21 CFR \u00a7809.40"
+          ]
+        ]
+      },
+      "narration": "Royalty structure by biomarker class. First-in-class causal biomarkers \u2014 novel target validation \u2014 earn five to seven percent net. Predictive biomarkers for therapeutic decisions earn four to five percent. Prognostic for risk stratification, three to four. Pharmacodynamic for treatment monitoring, three to four. FDA-mandated companion diagnostic biomarkers, four to six percent. Rate scales with biomarker exclusivity, IP strength, and clinical utility evidence \u2014 premium rates for first-in-class causal biomarkers with BiRAGAS causal-evidence support."
+    },
+    {
+      "id": "s51_cdx_pnl",
+      "stream": "cdx",
+      "color": "#A855F7",
+      "kind": "table",
+      "kicker": "STREAM V \u00b7 5-YEAR P&L",
+      "title": "$0 \u2192 $18.6M \u00b7 first royalty turn-on 2028",
+      "body": "Back-loaded by structure. Pre-2028 is upfront milestones from IVD partners + co-filing prep. 2028 onward is royalty recognition. 95% gross margin \u2014 near-zero marginal cost.",
+      "table": {
+        "title": "Stream V \u00b7 5-Year P&L ($M)",
+        "headers": [
+          "Line Item",
+          "2026",
+          "2027",
+          "2028",
+          "2029",
+          "2030"
+        ],
+        "rows": [
+          [
+            "Active CDx (approved)",
+            0,
+            0,
+            1,
+            2,
+            3
+          ],
+          [
+            "Pre-approval milestones",
+            0,
+            1.8,
+            0,
+            0,
+            0
+          ],
+          [
+            "Year-1 royalty (1st CDx)",
+            0,
+            0,
+            5.4,
+            8.0,
+            10.0
+          ],
+          [
+            "Year-2 royalty (2nd CDx)",
+            0,
+            0,
+            0,
+            3.2,
+            6.0
+          ],
+          [
+            "Year-1 royalty (3rd CDx)",
+            0,
+            0,
+            0,
+            0,
+            2.6
+          ],
+          [
+            "STREAM V REVENUE",
+            0,
+            1.8,
+            5.4,
+            11.2,
+            18.6
+          ],
+          [
+            "COGS (~5% royalty admin)",
+            0,
+            0.1,
+            0.3,
+            0.6,
+            0.9
+          ],
+          [
+            "Gross Profit",
+            0,
+            1.7,
+            5.1,
+            10.6,
+            17.7
+          ],
+          [
+            "Gross Margin",
+            "\u2014",
+            "95%",
+            "95%",
+            "95%",
+            "95%"
+          ]
+        ]
+      },
+      "narration": "Stream Five P&L. Year one and two, near zero revenue \u2014 pre-approval co-filing milestones only. Year three, first royalty turn-on. First CDx approved, generating five point four million Year-One royalty. Year four, eight million from CDx number one, three point two from CDx number two. Year five, ten million from CDx number one at maturity, six million from CDx number two, two point six million from CDx number three first-year. Stream Five revenue at eighteen point six million. Ninety-five percent gross margin \u2014 the highest of any BiRAGAS stream. Near-zero marginal cost. Every royalty dollar is gross margin."
+    },
+    {
+      "id": "s52_cdx_compound",
+      "stream": "cdx",
+      "color": "#A855F7",
+      "kind": "chart",
+      "kicker": "STREAM V \u00b7 POST-2030 COMPOUNDING",
+      "title": "$125M annual by 2035 \u00b7 $951M NPV",
+      "body": "Three active CDx by 2030 grows to twelve active CDx by 2035. Each generates annuity revenue for 12-15 years. By 2035, $125M annual contribution. NPV at 10% discount: $951M.",
+      "chart": {
+        "type": "line",
+        "title": "CDx Pipeline \u00b7 Annual Royalty 2028 \u2192 2035 ($M)",
+        "x": [
+          "2028",
+          "2029",
+          "2030",
+          "2031",
+          "2032",
+          "2033",
+          "2034",
+          "2035"
+        ],
+        "series": [
+          {
+            "label": "BEAR (\u00d70.5)",
+            "color": "#FCA5A5",
+            "data": [
+              2.7,
+              5.6,
+              9.3,
+              16.0,
+              22.5,
+              36.0,
+              47.5,
+              115.0
+            ]
+          },
+          {
+            "label": "BASE",
+            "color": "#A855F7",
+            "data": [
+              5.4,
+              11.2,
+              18.6,
+              32.0,
+              45.0,
+              72.0,
+              95.0,
+              230.0
+            ]
+          },
+          {
+            "label": "BULL (\u00d71.5)",
+            "color": "#7C2D12",
+            "data": [
+              8.1,
+              16.8,
+              27.9,
+              48.0,
+              67.5,
+              108.0,
+              142.5,
+              345.0
+            ]
+          }
+        ]
+      },
+      "narration": "The post-2030 compounding picture. Three active CDx by 2030, generating eighteen point six million. By 2031, the second-year royalty steps up. By 2032, third CDx hits Year Two. By 2033, a fourth CDx is added \u2014 forty-five million annual. By 2035, with eight to twelve active CDx all at varying ramp stages, annual royalty contribution reaches one hundred twenty-five million in the base case. Net present value at a ten percent discount rate: nine hundred fifty-one million dollars. That's the long-tail value Stream Five locks in."
+    },
+    {
+      "id": "s53_cdx_thesis",
+      "stream": "cdx",
+      "color": "#A855F7",
+      "kind": "manifesto",
+      "kicker": "STREAM V \u00b7 THE THESIS",
+      "title": "Smallest stream in 2030. Largest compounding asset by 2035.",
+      "subtitle": "$18.6M today. $125M annual by 2035. $951M NPV at 10% discount. Stream V is structurally un-modeled upside \u2014 the dollars hit the model only after 2030.",
+      "narration": "Stream Five's thesis. Smallest stream in 2030 at eighteen point six million. Largest compounding asset by 2035 at one hundred twenty-five million annual. Net present value at ten percent discount rate is nine hundred fifty-one million. The five-year model only captures the eighteen point six million 2030 number. Everything beyond is structurally unmodeled upside. Stream Five is what makes BiRAGAS a long-duration compounding investment \u2014 not a five-year venture."
+    },
+    {
+      "id": "s54_synthesis",
+      "stream": "close",
+      "color": "#1E40AF",
+      "kind": "stat-grid",
+      "kicker": "SYNTHESIS",
+      "title": "Five streams \u00b7 one operating system \u00b7 compounding for 15+ years",
+      "kpis": [
+        {
+          "k": "$618.8M",
+          "v": "2030 base case revenue"
+        },
+        {
+          "k": "40.2%",
+          "v": "2030 EBITDA margin"
+        },
+        {
+          "k": "$248.8M",
+          "v": "2030 EBITDA"
+        },
+        {
+          "k": "30 markets",
+          "v": "served"
+        }
+      ],
+      "narration": "Synthesis. Five streams that compound on the same operating system. The SaaS stream is recurring license revenue with one hundred thirty-two percent NRR expansion. The co-development stream is milestone payments with a decade-long royalty tail. The LDT stream is clinical revenue tied to patient billing. The wellness stream is premium subscription with brand-multiplier value. The CDx stream is structural unmodeled upside through 2035. Together: six hundred eighteen point eight million by 2030. Forty point two percent EBITDA margin. Two hundred forty-eight point eight million in EBITDA. Thirty distinct markets served."
+    },
+    {
+      "id": "s55_inflection",
+      "stream": "close",
+      "color": "#1E40AF",
+      "kind": "chart",
+      "kicker": "THE 2028 INFLECTION",
+      "title": "EBITDA-positive 2027 \u00b7 26% margin 2028 \u00b7 40%+ by 2030",
+      "body": "Operating leverage modeled bottom-up. OpEx ratio drops from 235% of revenue in year 1 to 56% by year 5. Standard SaaS-platform unit economics on a deep-tech bio infrastructure foundation.",
+      "chart": {
+        "type": "line",
+        "title": "Revenue \u00b7 EBITDA \u00b7 Margin Trajectory \u00b7 2026 \u2192 2030",
+        "x": [
+          "2026",
+          "2027",
+          "2028",
+          "2029",
+          "2030"
+        ],
+        "series": [
+          {
+            "label": "Revenue ($M)",
+            "color": "#3B82F6",
+            "data": [
+              51,
+              150,
+              209.7,
+              418,
+              618.8
+            ]
+          },
+          {
+            "label": "EBITDA ($M)",
+            "color": "#10B981",
+            "data": [
+              -25,
+              8,
+              54.5,
+              135,
+              248.8
+            ]
+          },
+          {
+            "label": "Margin %",
+            "color": "#C8A560",
+            "data": [
+              -49,
+              5,
+              26,
+              32,
+              40
+            ]
+          }
+        ]
+      },
+      "narration": "The 2028 inflection. Revenue scales from fifty-one million in year one to six hundred eighteen point eight million by year five. EBITDA crosses zero in year two and reaches fifty-four point five million by year three \u2014 that's the inflection. Two hundred forty-eight point eight million by year five. Margin compounds: negative forty-nine percent in year one through five percent in year two, twenty-six percent in year three, thirty-two in year four, forty point two in year five. Operating leverage modeled bottom-up. OpEx ratio drops from two hundred thirty-five percent of revenue in year one to fifty-six percent by year five. Standard SaaS-platform unit economics on a deep-tech infrastructure foundation."
+    },
+    {
+      "id": "s56_moats",
+      "stream": "close",
+      "color": "#1E40AF",
+      "kind": "list",
+      "kicker": "THE MOATS",
+      "title": "5 compounding moats \u00b7 18 patent categories",
+      "body": "BiRAGAS is the infrastructure layer underneath every applied AI tool. The moats compound \u2014 each successful deployment makes the next one stronger.",
+      "bullets": [
+        "Data \u2014 8.6M Bio-RAG vectors + 88.9B perturbations + 837 modules",
+        "Causal substrate \u2014 proprietary causal inference layer \u00b7 4 modalities",
+        "IP \u2014 18 patent categories CAT-00..17 spanning core methods through applied diagnostics",
+        "Regulatory \u2014 FDA BQP framework engagement \u00b7 CDx co-approval pathway",
+        "Clinical \u2014 ATLAS Group + 10 LDT clinical anchor networks \u00b7 real patient evidence"
+      ],
+      "narration": "Five compounding moats. The data moat \u2014 eight point six million Bio-RAG vectors, eighty-eight point nine billion perturbations, eight hundred thirty-seven analytical modules. The causal substrate moat \u2014 proprietary causal inference layer working across four data modalities. The IP moat \u2014 eighteen patent categories spanning core methods through applied diagnostics. The regulatory moat \u2014 FDA Biomarker Qualification Program engagement, CDx co-approval pathway expertise. The clinical moat \u2014 ATLAS Group expert panel plus ten LDT clinical anchor networks delivering real patient evidence. Each moat compounds \u2014 every successful deployment makes the next one stronger."
+    },
+    {
+      "id": "s57_competitive",
+      "stream": "close",
+      "color": "#1E40AF",
+      "kind": "manifesto",
+      "kicker": "THE COMPETITIVE LANDSCAPE",
+      "title": "Recursion. Schr\u00f6dinger. Tempus. BenevolentAI. They are applications.",
+      "subtitle": "BiRAGAS is infrastructure. We don't compete with these companies \u2014 we power them. The platform substrate is what makes their applications work.",
+      "narration": "The competitive landscape. Recursion. Schr\u00f6dinger. Tempus. BenevolentAI. Insitro. Owkin. Atomwise. Verge. Exscientia. All of them are applications. BiRAGAS is infrastructure. We don't compete with these companies \u2014 we power them. The causal substrate beneath their image-omics correlation, their molecular dynamics, their knowledge graphs \u2014 is the substrate BiRAGAS provides. The thesis is structural: the application layer needs an infrastructure layer. BiRAGAS is the infrastructure layer."
+    },
+    {
+      "id": "s58_ask",
+      "stream": "close",
+      "color": "#1E40AF",
+      "kind": "stat-grid",
+      "kicker": "THE ASK",
+      "title": "$20M SAFE \u00b7 $40M cap \u00b7 20% discount \u00b7 12-month Refund Right rider",
+      "body": "Bridge to qualifying equity financing. Refund Right milestone-gated through Tier-1 corporate / Tier-2 commercial / Tier-3 product gates. Use of proceeds mapped to milestone hits.",
+      "kpis": [
+        {
+          "k": "$20M",
+          "v": "SAFE round"
+        },
+        {
+          "k": "$40M",
+          "v": "valuation cap"
+        },
+        {
+          "k": "20%",
+          "v": "discount"
+        },
+        {
+          "k": "12 months",
+          "v": "Refund Right window"
+        }
+      ],
+      "narration": "The ask. Twenty million dollars in a SAFE structure. Forty million dollar valuation cap. Twenty percent discount to qualified financing. Twelve-month Refund Right rider milestone-gated through Tier-1 corporate gates, Tier-2 commercial gates, and Tier-3 product gates. Use of proceeds mapped directly to milestone achievement. Bridge to qualifying equity financing at a substantially higher valuation tied to the demonstrated platform progress. The structure protects downside while preserving optionality."
+    },
+    {
+      "id": "s59_use_proceeds",
+      "stream": "close",
+      "color": "#1E40AF",
+      "kind": "chart",
+      "kicker": "USE OF PROCEEDS",
+      "title": "$20M deployed across 5 acceleration vectors",
+      "body": "Engineering scale-up \u00b7 clinical trials for first 4 LDT lines \u00b7 BD&L for SaaS top-20 enterprise \u00b7 regulatory preparation \u00b7 operating runway.",
+      "chart": {
+        "type": "bar-h",
+        "title": "Use of Proceeds \u00b7 $20M Allocation",
+        "data": [
+          {
+            "label": "Engineering / platform scale-up",
+            "value": 7.5,
+            "color": "#3B82F6"
+          },
+          {
+            "label": "Clinical trials \u00b7 4 LDT lines",
+            "value": 4.5,
+            "color": "#14B8A6"
+          },
+          {
+            "label": "BD&L / SaaS enterprise sales",
+            "value": 3.5,
+            "color": "#1E40AF"
+          },
+          {
+            "label": "Regulatory / FDA prep",
+            "value": 2.5,
+            "color": "#A855F7"
+          },
+          {
+            "label": "Operating runway / G&A",
+            "value": 2.0,
+            "color": "#C8A560"
+          }
+        ],
+        "unit": "M"
+      },
+      "narration": "Use of proceeds. Seven point five million dollars to engineering and platform scale-up. Four point five million to clinical trials for the first four LDT disease lines. Three point five million to business development for the SaaS top-twenty enterprise pipeline. Two point five million to regulatory and FDA preparation including the BQP submissions and CDx co-approval prep. Two million for operating runway and G&A. The twenty million provides eighteen-to-twenty-four months of runway to the next qualifying financing at a substantially higher valuation."
+    },
+    {
+      "id": "s60_pharma_contacts",
+      "stream": "close",
+      "color": "#1E40AF",
+      "kind": "stat-grid",
+      "kicker": "APPENDIX \u00b7 PHARMA CONTACTS",
+      "title": "67 named R&D / AI / computational-biology leaders",
+      "body": "Public-source research roster across the top-20 Big Pharma. Pre-built outreach matrix in companion master workbook.",
+      "kpis": [
+        {
+          "k": "67",
+          "v": "named leaders identified"
+        },
+        {
+          "k": "7",
+          "v": "HIGH-confidence named CSOs"
+        },
+        {
+          "k": "20",
+          "v": "Big Pharma companies"
+        },
+        {
+          "k": "9",
+          "v": "role categories mapped"
+        }
+      ],
+      "narration": "The pharma contacts appendix. Sixty-seven named research and AI leaders identified across the top-twenty Big Pharma companies. Seven high-confidence named chief scientific officers \u2014 Skovronsky at Lilly, Branson at GSK, Petrovski at AstraZeneca, Thakkar at AbbVie, Sally John at BMS, Aris Baras at Regeneron, Maria F\u00e4lth Savitski at Boehringer Ingelheim. Roles mapped across CEO, CSO, AI/ML head, data science head, computational biology head, genomics head, bioinformatics head, translational sciences head, and BD&L. Source citations for every entry. The complete dataset is in the companion master workbook on sheets prefixed Contacts underscore."
+    },
+    {
+      "id": "s61_thesis_recap",
+      "stream": "close",
+      "color": "#1E40AF",
+      "kind": "manifesto",
+      "kicker": "THE THESIS \u00b7 RECAP",
+      "title": "BiRAGAS is causal infrastructure.",
+      "subtitle": "Five streams. One operating system. Compounding for 15+ years. The financial model captures only the visible 5 years. The structural value runs further.",
+      "narration": "The thesis, in one frame. BiRAGAS is causal infrastructure for drug design, drug discovery, patient stratification, and Causal Confidence Scoring of outcome truthfulness. Five revenue streams. One operating system. Compounding for fifteen-plus years. The financial model captures only the visible five years. The structural value \u2014 co-development royalty tail, CDx royalty compounding to 2035, SaaS net revenue retention, brand-multiplier effects \u2014 runs far further. Six hundred eighteen point eight million by 2030 is not the destination. It's the inflection."
+    },
+    {
+      "id": "s62_close",
+      "stream": "close",
+      "color": "#1E40AF",
+      "kind": "cover",
+      "kicker": "\u00b7  AYASS BIOSCIENCE  \u00b7  MMXXVI",
+      "title": "Welcome to the Causal Infrastructure.",
+      "subtitle": "BiRAGAS. The operating system for drug design, drug discovery, and patient stratification.",
+      "big_number": "$618.8M / 40.2%",
+      "big_label": "2030 base \u00b7 five streams \u00b7 one operating system \u00b7 compounding for 15+ years",
+      "narration": "Welcome to the causal infrastructure. BiRAGAS \u2014 the operating system for drug design, drug discovery, patient stratification, and Causal Confidence Scoring of outcome truthfulness. Six hundred eighteen point eight million dollars by 2030 base case. Forty point two percent EBITDA margin. Five streams, one platform, compounding for fifteen years and beyond. Thank you for your attention. The complete five-stream deep-dive material is in the companion master report and workbook. Let's get to work."
+    }
+  ]
+}</script>
+<script>
+(function() {
+  const el = document.getElementById("deck-data");
+  if (el) { try { window.__DECK_DATA__ = JSON.parse(el.textContent); } catch(e) { console.error(e); } }
+})();
+</script>
+</body>
+</html>
